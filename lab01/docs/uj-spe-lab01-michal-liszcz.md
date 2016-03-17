@@ -392,3 +392,180 @@ Zmierzone wartości są ze sobą związane zależnością:
 Rozwiązanie równania \eqref{eq:inner} (z założeniem że $R_w$ jest szukane)
 daje $R_w = (U_0 R - U R)/U \approx 54.17 \Omega$. Jest to zgodne z
 ustawieniami generatora ($R_w = 50 \Omega$).
+
+## Dwójnik szeregowy RC
+
+Celem zadania jest zbadanie dwójnika szeregowego RC.
+
+### Definicja
+
+Dwójnik szeregowy RC to układ połączonych szeregowo kondensatora i opornika.
+Przykład przedstawiony jest na rys. \ref{fig:6-1}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{{images/circuit-CR}.png}
+    \caption{Dwójnik szeregowy RC. Źródło: \textit{instrukcja laboratoryjna}.}
+    \label{fig:6-1}
+\end{figure}
+
+Funkcja odpowiedzi takiego układu to:
+
+\begin{equation}
+\frac{U_R}{U} = \frac{Z_R}{Z_C + Z_R} = \frac{R}{\frac{1}{j\omega C} + R}
+\label{eq:circCR}
+\end{equation}
+
+Impedancja zastępcza wynosi:
+
+\begin{equation}
+Z = Z_R + Z_C = R + \frac{1}{j\omega C} = R - \frac{j}{\omega C}
+\end{equation}
+
+Impedancję można umieścić na wykresie wskazowym:
+
+\begin{equation}
+\begin{aligned}
+Z &= |Z| e^{j\Phi}\\
+|Z| &= \sqrt{R^2 + \left(\frac{1}{\omega C}\right)^2}\\
+\Phi &= \arctan\left(\frac{-1}{\omega RC}\right)
+\end{aligned}
+\end{equation}
+
+### Pomiary
+
+Zbudowałem układ RC z elementów:
+
+* kondensator: $C = 4.25 \text{nF}$,
+* opornik: $R = 509 \Omega$.
+
+Wyznaczyłem stałą $f_0$:
+
+\begin{equation}
+f_0 = \frac{1}{2 \pi RC} \approx 73.609 \text{kHz}
+\end{equation}
+
+Następnie dla częstotliwości $f$ równych $0.5 f_0$, $f_0$ oraz $2f_0$ wykonałem
+pomiary amplitud i przesunięcia fazowego między sygnałem wejściowym i
+wyjściowym. Pomiary są przedstawione na kolejnych rysunkach \ref{fig:6-2},
+\ref{fig:6-3} oraz \ref{fig:6-4}. Wyniki zebrane są w tabeli poniżej:
+
+$f$ [Hz]  | $U$ [Vpp] | $U_R$ [Vpp] | $\varphi$ [$\degree$]
+----------|-----------|------------ | ---------------------
+$0.5 f_0$ | 9.760     | 4.080       | -64.65
+$1.0 f_0$ | 9.520     | 6.400       | -44.96
+$2.0 f_0$ | 9.200     | 7.920       | -27.22
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../screenshots/tek00057.png}
+    \caption{Układ RC. Częstotliwość $f = 0.5 f_0$.}
+    \label{fig:6-2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../screenshots/tek00056.png}
+    \caption{Układ RC. Częstotliwość $f = 1.0 f_0$.}
+    \label{fig:6-3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../screenshots/tek00058.png}
+    \caption{Układ RC. Częstotliwość $f = 2.0 f_0$.}
+    \label{fig:6-4}
+\end{figure}
+
+Widać, że dla dużych częstotliwości $f \gg f_0$ amplituda wyjściowa zbliża
+się do wejściowej, natomiast zmniejsza się przesunięcie fazowe.
+
+#### Wykresy wskazowe - impedancja zastępcza
+
+Narysowałem impedancję zastępczą układu w zależności od częstotliwości $f$.
+Diagramy wskazowe są przedstawione na kolejnych wykresach \ref{fig:6-5},
+\ref{fig:6-6} oraz \ref{fig:6-7}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/zad6-imp-zast-05f.png}
+    \caption{Impedancja zastępcza. $Z_R$ - niebieski, $Z_C$ - zielony,
+      $Z_z$ - czerwony. Częstotliwość $f = 0.5 f_0$.}
+    \label{fig:6-5}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/zad6-imp-zast-1f.png}
+    \caption{Impedancja zastępcza. $Z_R$ - niebieski, $Z_C$ - zielony,
+      $Z_z$ - czerwony. Częstotliwość $f = 1.0 f_0$.}
+    \label{fig:6-6}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/zad6-imp-zast-2f.png}
+    \caption{Impedancja zastępcza. $Z_R$ - niebieski, $Z_C$ - zielony,
+      $Z_z$ - czerwony. Częstotliwość $f = 2.0 f_0$.}
+    \label{fig:6-7}
+\end{figure}
+
+#### Wykresy wskazowe - napięcie
+
+Napięcie na oporniku ($U_R$) jest proporcjonalne do płynącego prądu
+$I = U_R/R$. Na jednym wykresie można narysować dwa wskazy: $U$ oraz $U_R$.
+
+Dla każdej z badanych częstotliwości założyłem że faza początkowa $U$ jest
+zerowa, natomiast amplituda - zgodna ze wskazaniem oscyloskopu. Zgodnie z
+zależnością \eqref{eq:circCR}, napięcie na oporniku powinno teoretycznie być
+równe:
+
+\begin{equation}
+U_R = \frac{Z_R}{Z_C + Z_R} U
+\end{equation}
+
+Porównałem tę teoretyczną zależność z danymi pomiarowymi oraz narysowałem
+wykresy wskazowe:
+
+$f$ [Hz]  | $U$ [Vpp] | $U_R$ - pom. [Vpp] | $\varphi$ - pom. [$\degree$] | $U_R$ - teor. [Vpp] | $\varphi$ -teor. [$\degree$]
+----------|-----------|------------ | ----------------------|---------------------|-----------------------------
+$0.5 f_0$ | 9.760 | 4.080 | 64.65  | 4.366 | 63.423
+$1.0 f_0$ | 9.520 | 6.400 | 44.96  | 6.733 | 44.986
+$2.0 f_0$ | 9.200 | 7.920 | 27.22  | 8.229 | 26.554
+
+Widać że zmierzone wartości są zbliżone do teoretycznych. Diagramy wskazowe
+są przedstawione na kolejnych wykresach \ref{fig:6-8}, \ref{fig:6-9} oraz
+\ref{fig:6-10}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/zad6-ampl-05f.png}
+    \caption{Amplituda. $U$ - niebieski, $U_R$ - zielony.
+      Częstotliwość $f = 0.5 f_0$.}
+    \label{fig:6-8}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/zad6-ampl-1f.png}
+    \caption{Amplituda. $U$ - niebieski, $U_R$ - zielony.
+      Częstotliwość $f = 1.0 f_0$.}
+    \label{fig:6-9}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.4\textwidth]{images/zad6-ampl-2f.png}
+    \caption{Amplituda. $U$ - niebieski, $U_R$ - zielony.
+      Częstotliwość $f = 2.0 f_0$.}
+    \label{fig:6-10}
+\end{figure}
+
+## Dwójnik szeregowy RLC
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{{images/circuit-LCR}.png}
+    \caption{Dwójnik szeregowy RLC. Źródło: \textit{instrukcja laboratoryjna}.}
+    \label{fig:7-1}
+\end{figure}
