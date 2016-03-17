@@ -292,3 +292,73 @@ Zmierzony okres dudnień to $T_d$ = 19.96 \text{ms}$. Daje to częstość:
 Wynik jest bardzo zbliżony do teoretycznej wartości $100 \pi \cdot s^{-1}$.
 
 ## Dzielnik napięcia
+
+Ta część laboratorium polegała na konstrukcji dzielnika napięcia i
+doświadczalnym wyznaczeniu zależności napięcia wyjściowego $U_\text{wy}$
+od napięcia wejściowego $U_\text{we}$.
+
+### Definicja
+
+Dzielnik napięcia to dwójnik, pozwalający na ustalenie stosunku napięcia
+wyjściowego względem wejściowego. Układ przedstawiony jest na rys.
+\ref{fig:4-1}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.2\textwidth]{images/{744px-DielnikNapiecia.svg}.png}
+    \caption{Dzielnik napięcia. Źródło: \texttt{pl.wikipedia.org}.}
+    \label{fig:4-1}
+\end{figure}
+
+Napięcia w dzielniku pozostają w stosunku:
+
+\begin{equation}
+U_\text{wy} = \frac{R_1}{R + R_1} U_\text{we} = T \cdot U_\text{we}
+\label{eq:divider}
+\end{equation}
+
+### Pomiary
+
+Zbudowałem układ przedstawiony na rys. \ref{fig:4-1}, z elementami:
+
+| Element | $R [\Omega]$ |
+|---------|--------------|
+| $R$     | 1846         |
+| $R_1$   | 509          |
+
+Na kanale wejściowym ustawiłem częstotliwość $1\text{kHz}$. Zmieniając
+amplitudę Vpp na wejściu (w zakresie $0-10V$) mierzyłem amplitudę na wyjściu.
+Wyniki przedstawia poniższa tabela:
+
+$U$ generatora [Vpp] | $U_\text{we}$ [mVpp] | $U_\text{wy}$ [mVpp] | $\sigma(U_\text{wy})$ [mVpp]
+---------------------|----------------------|----------------------|-----------------------------
+1.0  | 984.0   | 200.0  |  18.25
+2.0  | 1960.0  | 400.0  |  75.48
+3.0  | 2920.0  | 677.8  |  81.30
+4.0  | 3920.0  | 874.1  |  90.08
+5.0  | 4920.0  | 1000.0 |  104.90
+6.0  | 5880.0  | 1240.0 |  144.20
+7.0  | 6920.0  | 1440.0 |  168.10
+8.0  | 7840.0  | 1738.0 |  56.52
+9.0  | 8800.0  | 1760.0 |  68.55
+10.0 | 9760.0  | 2000.0 |  123.40
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{plots/{fig-divisor--result-divisor.txt}.png}
+    \caption{Dzielnik napięcia. Regresja liniowa.}
+    \label{fig:4-2}
+\end{figure}
+
+Do zmierzonych punktów dopasowałem prostą metodą regresji liniowej. Dopasowana
+krzywa przedstawiona jest na rys. \ref{fig:4-2}. Otrzymałem wynik:
+
+\begin{equation}
+U_\text{wy} = T \cdot U_\text{we} = 0.2108(34) \cdot U_\text{we}
+\end{equation}
+
+Oczekiwana wartość teoretyczna obliczona na podstawie wzoru \eqref{eq:divider}
+to $T = 0.216135881$.
+
+Wynik jest zgodny bardzo zbliżony do wartości otrzymanej doświadczalnie. Nie
+są jednak zgodne w granicy niepewności.
