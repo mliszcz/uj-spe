@@ -362,3 +362,33 @@ to $T = 0.216135881$.
 
 Wynik jest zgodny bardzo zbliżony do wartości otrzymanej doświadczalnie. Nie
 są jednak zgodne w granicy niepewności.
+
+## Rezystancja wewnętrzna (wyjściowa) generatora
+
+Oscyloskop o małym oporze wyjściowym wraz z małym obciążeniem tworzy dzielnik
+napięcia. Stąd można  obliczyć opór wyjściowy generatora.
+
+Pomiary przeprowadziłem w dwóch krokach:
+
+1. Ustawiłem *load output* generatora na $R_w = 50 \Omega$ i obciążyłem go
+   znacznie większym oporem oscyloskopu ($1 M\Omega$).
+
+    * na generatorze ustawiłem amplitudę $1 \text{Vpp}$,
+    * na oscyloskopie odczytałem amplitudę napięcia źródła
+      $U_0 = 2 \text{Vpp}$.
+
+1. Zmieniłem opór oscyloskopu na zbliżony do generatora ($R = 50 \Omega$).
+
+    * na oscyloskopie odczytałem amplitudę napięcia na obciążeniu
+      $U = 0.960 \text{Vpp}$.
+
+Zmierzone wartości są ze sobą związane zależnością:
+
+\begin{equation}
+\frac{R}{R_w + R} = \frac{U}{U_0}
+\label{eq:inner}
+\end{equation}
+
+Rozwiązanie równania \eqref{eq:inner} (z założeniem że $R_w$ jest szukane)
+daje $R_w = (U_0 R - U R)/U \approx 54.17 \Omega$. Jest to zgodne z
+ustawieniami generatora ($R_w = 50 \Omega$).
