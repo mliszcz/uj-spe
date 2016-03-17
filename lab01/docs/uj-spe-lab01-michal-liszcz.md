@@ -26,10 +26,6 @@ header-includes:
 
 # Wstęp
 
-*TODO*
-
-Blah blah blah.
-
 Podstawy teoretyczne związane z poszczególnymi zadaniami znajdują się w
 odpowiadających im rozdziałach.
 
@@ -563,9 +559,117 @@ są przedstawione na kolejnych wykresach \ref{fig:6-8}, \ref{fig:6-9} oraz
 
 ## Dwójnik szeregowy RLC
 
+Ostatnie zadanie to badanie rezonansu napięć w dwójniku RLC.
+
+### Definicja
+
+Dwójnik szeregowy RLC to układ połączonych ze sobą szeregowo cewki,
+kondensatora i opornika. Układ taki przedstawiony jest na rys. \ref{fig:7-1}.
+
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.2\textwidth]{{images/circuit-LCR}.png}
     \caption{Dwójnik szeregowy RLC. Źródło: \textit{instrukcja laboratoryjna}.}
     \label{fig:7-1}
+\end{figure}
+
+Impedancja zastępcza tego układu to:
+
+\begin{equation}
+\begin{aligned}
+Z_z &= Z_R + Z_L + Z_C = R + j \omega L - \frac{j}{\omega C}
+  = R + j \left(\omega L - \frac{1}{\omega C}\right)\\
+|Z_z| &= \sqrt{R^2 \left(\omega L - \frac{1}{\omega C}\right)}\\
+\Phi &= \arctan{\left(\frac{\omega L - \frac{1}{\omega C}}{R}\right)}
+\end{aligned}
+\end{equation}
+
+### Rezonans napięć
+
+Impedancja zastępcza układu jest najmniejsza, gdy występuje tylko składowa
+pochodząca od opornika. Spadek napięcia jest w tym wypadku najmniejszy,
+ponieważ spadek napięcia na cewce jest przeciwny spadkowi napięcia na
+kondensatorze.
+
+W rezonansie występuje zerowe przesunięcie fazy pomiędzy napięciem $U$
+a prądem $I$ ($I = U_R/R$).
+
+Częstotliwość rezonansową można otrzymać z warunku:
+
+\begin{equation}
+\omega_0 L - \frac{1}{\omega_0 C} = 0 \qquad \leftarrow \qquad
+\omega_0 = \frac{1}{\sqrt{LC}}
+\end{equation}
+
+### Pomiary
+
+Pomiary polegały na znalezeniu częstotliwości rezonansowej na trzy sposoby:
+
+* poprzez obserwowanie dwóch przebiegów na osi czasowej
+* poprzez obserwowanie przebiegów w trybie X-Y
+* poprzez obserwowanie funkcji różnicy $U_{LC} = U - U_R$.
+
+Teoretyczna częstotliwość rezonansowa powinna wynosić:
+
+\begin{equation}
+f_0 = \frac{1}{2\pi\sqrt{LC}} \approx 31.517 \text{kHz}
+\end{equation}
+
+Wartość jaką znalazłem doświadczalnie jest zgodna z wartością teoretyczną
+i wynosi:
+
+\begin{equation}
+f_0 = 31.980 \text{kHz}
+\end{equation}
+
+Rezonans przedstawiony jest na kolejnych rzutach ekranu na rys. \ref{fig:7-2},
+\ref{fig:7-3}, \ref{fig:7-4} oraz \ref{fig:7-5}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../screenshots/tek00068.png}
+    \caption{Rezonans napięć.}
+    \label{fig:7-2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../screenshots/tek00069.png}
+    \caption{Rezonans napięć. Tryb X-Y.}
+    \label{fig:7-3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../screenshots/tek00072.png}
+    \caption{Rezonans napięć. Różnica sygnałów. 1.}
+    \label{fig:7-4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../screenshots/tek00075.png}
+    \caption{Rezonans napięć. Różnica sygnałów. 2.}
+    \label{fig:7-5}
+\end{figure}
+
+##### Poza częstotliwością rezonansową
+
+Zmierzyłem amplitudy sygnałów dla częstotliwości $f_1 \ll f_0$
+($f_1 = 1 \text{kHz}$) oraz dla częstotliwości $f_2 \gg f_0$
+($f_2 = 1 \text{MHz}$). W obu przypadkach impedancja układu powinna być bardzo
+duża. Taka sytuacja przedstawiona jest na rys. \ref{fig:7-6} i \ref{fig:7-7}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../screenshots/tek00077.png}
+    \caption{Brak rezonansu napięć. $f_1 \ll f_0$.}
+    \label{fig:7-6}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{../screenshots/tek00078.png}
+    \caption{Brak rezonansu napięć. $f_2 \gg f_0$.}
+    \label{fig:7-7}
 \end{figure}
