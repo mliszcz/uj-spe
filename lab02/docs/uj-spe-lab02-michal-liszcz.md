@@ -61,6 +61,78 @@ W ramach laboratorium wykonałem 5 ćwiczeń opisanych w instrukcji.
 
 ### Czas narastania
 
+Czas narastania impulsu zdefiniowany jest jako czas w którym wartość mierzonego
+impulsu wzrasta z $0.1$ amplitudy do $0.9$ amplitudy.
+
+W celu oszacowania czasu narastania układu RC, zgodnie z poleceniem na
+generatorze ustawiłem częstotliwość odpowiadającą okresowi $T = 5\tau$,
+$f \approx 30 \,\text{kHz}$. Następnie ustawiłem kursory na wartościach
+zbliżonych do $0.1 \,\text{Vpp}$ oraz $0.9 \,\text{Vpp}$. Odczytany czas
+narastania to $10.76 \,\mu\text{s}$.
+
+Przebieg pomiaru przedstawia rys. \ref{fig:tek227}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00227.png}
+  \caption{Pomiar czasu narastania.}
+  \label{fig:tek227}
+\end{figure}
+
+### Stała czasowa
+
+Stałą czasową układu można wyznaczyć w alternatywny sposób, korzystając z
+analitycznej postaci odpowiedzi układu na sygnał prostokątny:
+
+\begin{equation}
+  u_1(t) =
+    \begin{cases}
+      U & \text{dla } 0 < t < t_p \\
+      0 & \text{dla } t < 0, t > t_p
+    \end{cases}
+\end{equation}
+
+\begin{equation}
+  u_2(t) =
+    \begin{cases}
+      U\left(1-\mathrm{e}^{-t/\tau}\right)                      & \text{dla } 0 < t < t_p \\
+      U\left(\mathrm{e}^{t_p/\tau}-1\right)\mathrm{e}^{-t/\tau} & \text{dla } t < 0, t > t_p
+    \end{cases}
+  \label{eq:rcu2}
+\end{equation}
+
+Dla częstotliwości $f = 10 \,\text{kHz}$ ($t_p = 50 \,\mu\text{s}$) dokonałem
+pomiarów wartości $u_2(t)$ w przedziałach $[0,t_p]$ oraz $[t_p, 2t_p]$ a
+następnie do danych pomiarowych dopasowałem krzywe opisane równaniami
+\eqref{eq:rcu2}.
+
+Otrzymałem wartości:
+
+\begin{equation}
+  \tau =
+    \begin{cases}
+      5.98(17) \,\mu\text{s} & \text{dla } 0 < t < t_p \\
+      6.444(55) \,\mu\text{s} & \text{dla } t < 0, t > t_p
+    \end{cases}
+\end{equation}
+
+Sposób pomiaru przedstawiony jest na rys. \ref{fig:tek115}, natomiast
+dopasowane krzywe na rys. \ref{fig:rcrisefall}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00115.png}
+  \caption{Wyznaczanie stałej $\tau$.}
+  \label{fig:tek115}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-rc-tau-rise-fall--results-rc-rise-3.csv--results-rc-fall-3.csv}.png}
+  \caption{Wyznaczanie stałej $\tau$. Dopasowane krzywe.}
+  \label{fig:rcrisefall}
+\end{figure}
+
 ## Czwórnik RLC (równoległy)
 
 ### Charakterystyki
