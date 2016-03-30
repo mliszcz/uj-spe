@@ -133,7 +133,7 @@ dopasowane krzywe na rys. \ref{fig:rcrisefall}.
   \label{fig:rcrisefall}
 \end{figure}
 
-## Czwórnik RLC (równoległy)
+## Czwórnik RLC (równoległy LC)
 
 ### Charakterystyki
 

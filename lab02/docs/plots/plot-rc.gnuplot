@@ -21,7 +21,7 @@ set ylabel "|T|"
 
 set logscale x
 
-set title sprintf("Czwórnik RC, charakterystyka fazowa, %s", input_data)
+set title sprintf("Czwórnik RC, charakterystyka amplitudowa, %s", input_data)
 
 plot input_data using 2:($4/$3) title input_data linestyle 2, \
      T(x) title fittitleT linestyle 4
