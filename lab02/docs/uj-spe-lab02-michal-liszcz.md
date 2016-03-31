@@ -63,7 +63,7 @@ Schemat układu przedstawia rys. \ref{fig:circCr}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{images/circuit-cr.png}
-  \caption{Czwórnik CR. Układ różniczkujący.}
+  \caption{Czwórnik CR. Układ różniczkujący. Źródło: instrukcja laboratoryjna.}
   \label{fig:circCr}
 \end{figure}
 
@@ -148,9 +148,91 @@ Dopasowane krzywe przedstawione są na rys. \ref{fig:crAmplNolog},
 
 ## Układ różniczkujacy - odpowiedź dla sygnału prostokątnego
 
+*TODO*
+
 ## Układ całkujący
 
-### Charakterystyki
+To zadanie polegało na zbadaniu charakterystyk układu całkującego oraz czasu
+narastania impulsu wyjściowego.
+
+### Wprowadzenie
+
+Układ całkujący to czwórnik RC, nazywany również filtrem dolnoprzepustowym.
+Schemat układu przedstawia rys. \ref{fig:circRc}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/circuit-rc.png}
+  \caption{Czwórnik RC. Układ całkujący. Źródło: instrukcja laboratoryjna.}
+  \label{fig:circRc}
+\end{figure}
+
+Funkcja transmisji powyższego układu wynosi:
+
+\begin{equation}
+T(f) = \frac{Z_C}{Z_C+Z_R} = \frac{1}{1+j\frac{f}{f_0}}
+\end{equation}
+
+
+Charakterystyka amplitudowa:
+
+\begin{equation}
+|T(f)|=\sqrt{\frac{1}{
+  1+\left(\frac{f}{f_0}\right)^2
+}}
+\end{equation}
+
+Charakterystyka fazowa:
+
+\begin{equation}
+\Phi(f) = \arctan\left(\frac{\Im T(f)}{\Re T(f)}\right) = - \arctan\left(\frac{f}{f_0}\right)
+\end{equation}
+
+### Wyznaczone charakterystyki
+
+W celu wyznaczenia charakterystyk ustawiłem na generatorze amplitudę fali
+sinusoidalnej na $4\,\text{mVpp}$ i mierzyłem amplitudy napięcia wejściowego
+oraz wyjściowego i przesunięcie fazowe w szerokim zakresie częstotliwości.
+
+Do danych pomiarowych dopasowałem krzywe teoretyczne, z parametrem $f_0$.
+Otrzymałem wartości:
+
+* charakterystyka amplitudowa: $f_0 = 25640(220) \,\text{Hz}$
+* charakterystyka fazowa: $f_0 = 26580(880) \,\text{Hz}$
+
+Jak poprzednio, otrzymane wyniki są zbliżone, jednak niezgodne z wartością
+teoretyczną $f_0 = 24565.69 \,\text{Hz}$.
+
+Dopasowane krzywe przedstawione są na rys. \ref{fig:rcAmplNolog},
+\ref{fig:rcAmplLog}, \ref{fig:rcPhaseNolog} oraz \ref{fig:rcPhaseLog}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-rc-ampl-nologscale--results-rc-3.csv}.png}
+  \caption{Czwórnik RC. Układ całkujący. Charakterystyka amplitudowa. Skala liniowa.}
+  \label{fig:rcAmplNolog}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-rc-ampl-logscale--results-rc-3.csv}.png}
+  \caption{Czwórnik RC. Układ całkujący. Charakterystyka amplitudowa. Skala logarytmiczna.}
+  \label{fig:rcAmplLog}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-rc-phase-nologscale--results-rc-3.csv}.png}
+  \caption{Czwórnik RC. Układ całkujący. Charakterystyka fazowa. Skala liniowa.}
+  \label{fig:rcPhaseNolog}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-rc-phase-logscale--results-rc-3.csv}.png}
+  \caption{Czwórnik RC. Układ całkujący. Charakterystyka fazowa. Skala logarytmiczna.}
+  \label{fig:rcPhaseLog}
+\end{figure}
 
 ### Czas narastania
 
@@ -208,6 +290,9 @@ Otrzymałem wartości:
       6.444(55) \,\mu\text{s} & \text{dla } t < 0, t > t_p
     \end{cases}
 \end{equation}
+
+Otrzymane wyniki są zbliżone do wartości teoretycznej
+$\tau = 6.479 \,\mu\text{s}$.
 
 Sposób pomiaru przedstawiony jest na rys. \ref{fig:tek115}, natomiast
 dopasowane krzywe na rys. \ref{fig:rcrisefall}.
