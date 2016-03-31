@@ -148,7 +148,29 @@ Dopasowane krzywe przedstawione są na rys. \ref{fig:crAmplNolog},
 
 ## Układ różniczkujacy - odpowiedź dla sygnału prostokątnego
 
-*TODO*
+To zadanie polegało na sprawdzeniu odpowiedzi układu różniczkującego dla
+impulsów prostokątnych o różnym okresie.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00066.png}
+  \caption{Różniczkowanie impulsu prostokątnego. Mała częstotliwość, duży
+    okres, poprawne różniczkowanie.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00067.png}
+  \caption{Różniczkowanie impulsu prostokątnego. Okres porównywalny ze stałą
+    czasową.}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00068.png}
+  \caption{Różniczkowanie impulsu prostokątnego. Okres dużo mniejszy od stałej
+    czasowej. Powolna reakcja układu różniczkującego na zmianę sygnału.}
+\end{figure}
 
 ## Układ całkujący
 
