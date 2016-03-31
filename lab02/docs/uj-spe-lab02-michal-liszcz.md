@@ -98,6 +98,54 @@ charakterystyką fazową:
 \Phi(f) = \arctan\left(\frac{\Im T(f)}{\Re T(f)}\right) = \arctan\left(\frac{f_0}{f}\right)
 \end{equation}
 
+### Wyznaczone charakterystyki
+
+W celu wyznaczenia charakterystyk ustawiłem na generatorze amplitudę fali
+sinusoidalnej na $4\,\text{mVpp}$ i mierzyłem amplitudy napięcia wejściowego
+oraz wyjściowego i przesunięcie fazowe w szerokim zakresie częstotliwości.
+
+Do danych pomiarowych dopasowałem krzywe teoretyczne, z parametrem $f_0$.
+Otrzymałem wartości:
+
+* charakterystyka amplitudowa: $f_0 = 29150(280) \,\text{Hz}$
+* charakterystyka fazowa: $f_0 = 26190(240) \,\text{Hz}$
+
+Druga z wartości jest bardzo zbliżona do wartości teoretycznej
+$f_0 = 24565.69 \,\text{Hz}$, nie są jednak zgodne, po uwzględnieniu
+niepewności. Jest to spowodowane niedokładnymi pomiarami i niedoskonałościami
+przyrządów pomiarowych.
+
+Dopasowane krzywe przedstawione są na rys. \ref{fig:crAmplNolog},
+\ref{fig:crAmplLog}, \ref{fig:crPhaseNolog} oraz \ref{fig:crPhaseLog}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-cr-ampl-nologscale--results-cr-1.csv}.png}
+  \caption{Czwórnik CR. Układ różniczkujący. Charakterystyka amplitudowa. Skala liniowa.}
+  \label{fig:crAmplNolog}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-cr-ampl-logscale--results-cr-1.csv}.png}
+  \caption{Czwórnik CR. Układ różniczkujący. Charakterystyka amplitudowa. Skala logarytmiczna.}
+  \label{fig:crAmplLog}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-cr-phase-nologscale--results-cr-1.csv}.png}
+  \caption{Czwórnik CR. Układ różniczkujący. Charakterystyka fazowa. Skala liniowa.}
+  \label{fig:crPhaseNolog}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-cr-phase-logscale--results-cr-1.csv}.png}
+  \caption{Czwórnik CR. Układ różniczkujący. Charakterystyka fazowa. Skala logarytmiczna.}
+  \label{fig:crPhaseLog}
+\end{figure}
+
 ## Układ różniczkujacy - odpowiedź dla sygnału prostokątnego
 
 ## Układ całkujący
