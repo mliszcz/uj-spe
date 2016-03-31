@@ -53,6 +53,51 @@ W ramach laboratorium wykonałem 5 ćwiczeń opisanych w instrukcji.
 
 ## Układ rózniczkujący - charakterystyki
 
+To zadanie polegało na zbadaniu charakterystyk układu różniczkujacego.
+
+### Wprowadzenie
+
+Układ różniczkujący to czwórnik CR, nazywany również filtrem górnoprzepustowym.
+Schemat układu przedstawia rys. \ref{fig:circCr}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/circuit-cr.png}
+  \caption{Czwórnik CR. Układ różniczkujący.}
+  \label{fig:circCr}
+\end{figure}
+
+Funkcja transmisji powyższego układu wynosi:
+
+\begin{equation}
+T(f) = \frac{Z_R}{Z_R+Z_C} = \frac{j\frac{f}{f_0}}{1+j\frac{f}{f_0}}
+\end{equation}
+
+Gdzie $f_0$ to częstotliwość graniczna:
+
+\begin{equation}
+f_0 = \frac{1}{2 \pi \tau}
+\end{equation}
+
+a $\tau = RC$ to stała czasowa.
+
+Charakterystyką amplitudową nazywa się zależność $|T(f)|$:
+
+\begin{equation}
+|T(f)|=\sqrt{\frac{
+  \left(\frac{f}{f_0}\right)^2
+}{
+  1+\left(\frac{f}{f_0}\right)^2
+}}
+\end{equation}
+
+Zależność przesunięcia fazowego od częstotliwości nazywa się
+charakterystyką fazową:
+
+\begin{equation}
+\Phi(f) = \arctan\left(\frac{\Im T(f)}{\Re T(f)}\right) = \arctan\left(\frac{f_0}{f}\right)
+\end{equation}
+
 ## Układ różniczkujacy - odpowiedź dla sygnału prostokątnego
 
 ## Układ całkujący
