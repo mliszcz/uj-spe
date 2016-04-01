@@ -335,8 +335,80 @@ dopasowane krzywe na rys. \ref{fig:rcrisefall}.
 
 ## Czwórnik RLC (równoległy LC)
 
-### Charakterystyki
+To zadanie polegało na badaniu charakterystyk układu RLC z cewką i
+kondensatorem połączonymi równolegle. Dodatkowo wyznaczona została
+częstotliwość rezonansowa.
 
-### Rezonans prądów
+### Wprowadzenie
+
+Badany układ to czwórnik, gdzie szeregowo połączony jest opornik z układem
+równoległej cewki i kondensatora, przedstawiony na rys. \ref{fig:circRlc}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/circuit-rlc.png}
+  \caption{Czwórnik RLC. Źródło: instrukcja laboratoryjna.}
+  \label{fig:circRlc}
+\end{figure}
+
+W takim układzie można zaobserwować rezonans prądów - prądy cewki i
+kondensatora zniosą się wzajemnie, tworząc przerwę w obwodzie o nieskończonej
+impedancji.
+
+Impedancja zastępcza układu LC wynosi:
+
+\begin{equation}
+Z_{LC} = \left(\frac{1}{Z_L} + \frac{1}{Z_C}\right)^{-1} = j \frac{1}{\frac{1}{\omega L} - \omega C}
+\end{equation}
+
+Z powyższego wzoru, częstość rezonansowa $\omega_0$ wynosi:
+
+\begin{equation}
+\omega_0 = \frac{1}{\sqrt{LC}}
+\end{equation}
+
+Teoretyczna częstotliwość rezonansowa to $f_0 = \frac{1}{2 \pi \sqrt{LC}}
+\approx 26343.51 \,\text{Hz}$.
+
+Dla układu RLC można również zdefiniować charakterystykę amplitudową i fazową:
+
+\begin{equation}
+\begin{aligned}
+|T(f)| &= \left|\frac{Z_R}{Z_R + Z_{LC}}\right| = \sqrt{\frac{R^2}{
+  R^2 + \left(\frac{1}{\frac{1}{2 \pi f L} - 2 \pi f C}\right)^2
+}} \\
+\Phi(f) &= \arctan\left(\frac{\Im T(f)}{\Re T(f)}\right) =
+\arctan\left(\frac{-1}{R\left(\frac{1}{2 \pi f L} - 2 \pi f C\right)}\right)
+\end{aligned}
+\end{equation}
+
+### Charakterystyki i rezonans
+
+W celu wykreślenia charakterystyk i wyznaczenia częstotliwości rezonansowej,
+wykonałem w jej pobliżu pomiary amplitudy oraz przesunięcia fazowego w układzue.
+
+Do wyników pomiarów dopasowałem krzywe teoretyczne, z parametrami $L$ i $C$.
+Wartość $R$ była ustalona, zgodnie z wartością zmierzoną. Otrzymałem wyniki
+zgodne z wartością teoretyczną:
+
+* charakterystyka amplitudowa: $f_0 = 26321.70 \,\text{Hz}$
+* charakterystyka fazowa: $f_0 = 26340.00 \,\text{Hz}$.
+
+Dopasowane krzywe przedstawione są na rys. \ref{fig:rlcAmplFit} oraz
+\ref{fig:rlcPhaseFit}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-mathematica-rlc-4-ampl-filtered}.png}
+  \caption{Charakterystyka amplitudowa. Krzywa dopasowana.}
+  \label{fig:rlcAmplFit}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-mathematica-rlc-4-phase-filtered}.png}
+  \caption{Charakterystyka fazowa. Zielony - krzywa teoretyczna, niebieski - krzywa dopasowana.}
+  \label{fig:rlcPhaseFit}
+\end{figure}
 
 ## Linia długa
