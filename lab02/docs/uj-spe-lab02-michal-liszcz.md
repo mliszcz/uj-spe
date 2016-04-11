@@ -385,7 +385,7 @@ Dla układu RLC można również zdefiniować charakterystykę amplitudową i fa
 ### Charakterystyki i rezonans
 
 W celu wykreślenia charakterystyk i wyznaczenia częstotliwości rezonansowej,
-wykonałem w jej pobliżu pomiary amplitudy oraz przesunięcia fazowego w układzue.
+wykonałem w jej pobliżu pomiary amplitudy oraz przesunięcia fazowego w układzie.
 
 Do wyników pomiarów dopasowałem krzywe teoretyczne, z parametrami $L$ i $C$.
 Wartość $R$ była ustalona, zgodnie z wartością zmierzoną. Otrzymałem wyniki
@@ -412,3 +412,141 @@ Dopasowane krzywe przedstawione są na rys. \ref{fig:rlcAmplFit} oraz
 \end{figure}
 
 ## Linia długa
+
+Ostatnie zadanie polegało na zbadaniu lini długiej bez strat, będącej
+idealizacją lini transmisyjnej o długości porównywalnej z długością fali
+przebiegu elektrycznego.
+
+### Wprowadzenie
+
+Propagację sygnału w linii długiej opisuje para równań:
+
+\begin{equation}
+\begin{aligned}
+\frac{\partial u(x,t)}{\partial x} &= L \frac{\partial i(x,t)}{\partial t} + R i(x,t) \\
+\frac{\partial i(x,t)}{\partial x} &= C \frac{\partial u(x,t)}{\partial t} + G u(x,t)
+\end{aligned}
+\end{equation}
+
+Gdzie $R, G, L, C$ to stałe parametry linii, wyrażone na jednostkę długości.
+
+Dla sygnału sinusoidalnego na wejściu, rozwiązanie to złożenie fali
+biegnącej i odbitej:
+
+\begin{equation}
+\begin{aligned}
+u(x,t) &= \left(A_1 \mathrm{e}^{\gamma x} + A_2 \mathrm{e}^{-\gamma x}\right) \mathrm{e}^{j\omega t} \\
+i(x,t) &= \frac{1}{Z_0} \left(A_1 \mathrm{e}^{\gamma x} - A_2 \mathrm{e}^{-\gamma x}\right) \mathrm{e}^{j\omega t} \\
+\end{aligned}
+\end{equation}
+
+Stała $Z_0$ to impedancja charakterystyczna linii:
+
+\begin{equation}
+Z_0 = \sqrt{\frac{R+j\omega L}{G + j\omega C}}
+\end{equation}
+
+W linii bez strat przyjmujemy $R = G = 0$, co daje $Z_0 =
+\sqrt{\frac{L}{C}}$, a fala biegnąca i odbita porusza się z prędkością $v_f = \frac{1}{\sqrt{LC}}$.
+
+Stosunek amplitudy fali padającej i odbitej jest zależny od
+impedancji charakterystycznej oraz impedancji obciążenia:
+
+\begin{equation}
+\rho = \frac{A_2}{A_1} = \frac{Z_\text{obc}-Z_0}{Z_\text{obc}+Z_0}
+\end{equation}
+
+Można wyróżnić trzy szczególne przypadki:
+
+* $Z_\text{obc} = Z_0 \quad \Rightarrow \rho = 0 \quad$ - linia prawidłowo
+  zwarta - brak odbić;
+* $Z_\text{obc} = \infty \quad \Rightarrow \rho = 1 \quad$ - linia rozwarta -
+  sygnał odbity z taką samą amplitudą;
+* $Z_\text{obc} = 0 \quad \Rightarrow \rho = -1 \quad$ - linia krótko zwarta -
+  odbicie sygnału z inwersją.
+
+### Pomiary
+
+Celem zadania było wyznaczenie stałych parametrów $L$ i $C$ linii, przy pomocy
+równań przedstawionych w poprzednim paragrafie.
+
+Dla linii rozwartej i krótko zwartej wyznaczyłem prędkość sygnału na podstawie
+pomiaru czasu przesunięcia fali odbitej. Dla linii prawidłowo obciążonej
+dobrałem taki opór obciążenia, przy którym nie było fali odbitej. Opór ten jest
+równy $Z_0$. Długość linii wynosiła $d = 16.2 \,\text{m}$.
+
+Pomiary dla linii rozwartej:
+
+$t1\,\text{[ns]}$ | $t2\,\text{[ns]}$ | $v_f\,\text{[10**8 m/s]}$
+------------------|-------------------|------------------------
+$746$ | $376$ | $1.75$
+$722$ | $378$ | $1.88$
+$832$ | $488$ | $1.88$
+
+Prędkość $v_f$ wyliczyłem z zależności $v_f = \frac{2d}{\Delta t}$, natomiast
+$\Delta t = (t_1-t_2)/2$.
+
+Pomiary dla linii zwartej:
+
+$\Delta t \,\text{[ns]}$ | $v_f\,\text{[10**8 m/s]}$
+-------------------------|--------------------------
+$154$ | $2.10$
+$160$ | $2.03$
+
+Średnia prędkość sygnału w linii długiej:
+
+\begin{equation}
+v_f = 1.93 \cdot 10^8 \,\text{m/s}
+\end{equation}
+
+Sposoby pomiaru przedstawione są na rys. \ref{fig:tek00231} oraz
+\ref{fig:tek00236}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00231.png}
+  \caption{Linia długa. Rozwarta. Pomiar opóźnienia (1).}
+  \label{fig:tek00231}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00236.png}
+  \caption{Linia długa. Krótko zwarta. Pomiar opóźnienia (2).}
+  \label{fig:tek00236}
+\end{figure}
+
+Znaleziony opór obciążenia, dla którego nie było fali odbitej:
+
+\begin{equation}
+Z_\text{obc} = Z_0 = 42.8 \Omega
+\end{equation}
+
+Przekształcając zależności $Z_0 = \sqrt{\frac{L}{C}}$ oraz $v_f =
+\frac{1}{\sqrt{LC}}$, otrzymałem:
+
+\begin{equation}
+\begin{aligned}
+L &= \frac{Z_0}{v_f} = 2.22 \cdot 10^{-7} \,\text{H/m} \\
+C &= \frac{1}{Z_0 v_f} = 1.21 \cdot 10^{-10} \,\text{F/m}
+\end{aligned}
+\end{equation}
+
+Ostatnim etapem tego zadania było podłączenie linii na drugi kanał oscyloskopu
+i pomiar opóźnienia linii na trzeci sposób. Długość linii w takim układzie to
+długość pierwotna pomniejszona o krótki kabel, $s = 1 \,\text{m}$. Zmierzone
+opóźnienie wynosiło $\Delta t = 76.40 \,\text{ns}$. Daje to prędkość sygnału:
+
+\begin{equation}
+v_f = \frac{d-s}{\Delta t} = 1.99 \cdot 10^8 \, \text{m/s}
+\end{equation}
+
+Otrzymany wynik jest zbliżony do poprzednich. Sposób pomiaru przedstawia rys.
+\ref{fig:tek00242}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00242.png}
+  \caption{Linia długa. Pomiar opóźnienia (3).}
+  \label{fig:tek00242}
+\end{figure}
