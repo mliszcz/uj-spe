@@ -2,7 +2,8 @@
 set datafile separator ","
 input_data = "01-output-k1.csv"
 
-MUL_VOUT=1
+# MUL_VOUT=1000 # for k=100
+MUL_VOUT=1 # for k=1
 
 set angles degrees
 

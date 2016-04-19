@@ -1,11 +1,11 @@
 
 set datafile separator ","
-input_data = "03-output-10Vpp.csv"
+input_data = "03-output-1Vpp.csv"
 
 set angles degrees
 
-# MUL_VOUT=1.0 # for 1Vpp
-MUL_VOUT=0.001 # for 10Vpp
+MUL_VOUT=1.0 # for 1Vpp
+# MUL_VOUT=0.001 # for 10Vpp
 
 T(x) = (x/f0) / ( (1+(x/f1)**2) * (1+(x/f2)**2) )**(0.5)
 
