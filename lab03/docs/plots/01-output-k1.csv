@@ -1,4 +1,4 @@
-image, V1 [mVpp], V2 [mVpp], phase , frequency [kHz]
+image, V1 [mVpp], V2 [mVpp], phase, frequency [kHz]
 tek00137.png, 96.00, 94.00, 179.6, 0.9997
 tek00138.png, 96.00, 94.00, 179.4, 1.996
 tek00139.png, 96.00, 94.00, 179.0, 2.996
