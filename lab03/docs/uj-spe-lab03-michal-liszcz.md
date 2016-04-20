@@ -293,8 +293,8 @@ Charakterystyka fazowa tego układu przedstawiona jest na rys. \ref{fig:3-2}.
 \begin{figure}[H]
   \centering
   \includegraphics[width=0.6\textwidth]{{plots/fig-opamp-diffint-phase-logscale--03-output-1Vpp.csv}.png}
-  \caption{Charakterystyka amplitudowa wzmacniacza różniczkująco-całkującego.}
-  \label{fig:3-1}
+  \caption{Charakterystyka fazowa wzmacniacza różniczkująco-całkującego.}
+  \label{fig:3-2}
 \end{figure}
 
 
