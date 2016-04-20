@@ -194,7 +194,7 @@ wzmacniacza - jest równe $U_{wy}$.
 Z powyższej zależności wynika:
 
 \begin{equation}
-R_{we} = \frac{K}{1-K} R
+R_{we} = \frac{K}{1-K} R_3
 \end{equation}
 
 Należało wyznaczyć opór przy częstotliwości $f=5\,\text{kHz}$. Z pomiarów
@@ -266,6 +266,8 @@ Daje to teoretyczne częstotliwości graniczne:
 * $f_1 = 1.157\,\text{kHz}$,
 * $f_2 = 119.3\,\text{kHz}$.
 
+Napięcie wejściowe ustawiłem na $V_1=1\,\text{mVpp}$.
+
 W celu ich potwierdzenia eksperymentalnego, do danych pomiarowych dopasowałem
 funkcję transmisji przedstawioną w poprzednim punkcie. Otrzymane parametry
 dopasowania to:
@@ -275,7 +277,7 @@ dopasowania to:
 * $f_2 = 169.5(4.7)\,\text{kHz}$.
 
 Widać że dolna częstotliwość graniczna jest bardzo zbliżona do wartości
-teoretycznej. Otrzymana wartość górna jest natomiast znacznie większa.
+teoretycznej. Otrzymana wartość górna jest natomiast istotnie większa.
 
 Dopasowaną krzywa przedstawia rys. \ref{fig:3-1}.
 
@@ -286,6 +288,14 @@ Dopasowaną krzywa przedstawia rys. \ref{fig:3-1}.
   \label{fig:3-1}
 \end{figure}
 
+Charakterystyka fazowa tego układu przedstawiona jest na rys. \ref{fig:3-2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{{plots/fig-opamp-diffint-phase-logscale--03-output-1Vpp.csv}.png}
+  \caption{Charakterystyka amplitudowa wzmacniacza różniczkująco-całkującego.}
+  \label{fig:3-1}
+\end{figure}
 
 
 ## Przerzutnik Schmidta
