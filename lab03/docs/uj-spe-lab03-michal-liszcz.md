@@ -322,9 +322,9 @@ U_{+} = \frac{R_2}{R_1+R_2} U_{wy} = U_{p}
 \end{equation}
 
 Napięcie to nazywane jest napięciem przerzuti, ponieważ jeżeli $|U_{we}|$
-przekroczy tę wartość, $U_{wy} zmienia znak na przeciwny.
+przekroczy tę wartość, $U_{wy}$ zmienia znak na przeciwny.
 
-Ponieważ wzmocnienie idealnego wzmacniacza jest nieskończone, $|U_{wy}| jest
+Ponieważ wzmocnienie idealnego wzmacniacza jest nieskończone, $|U_{wy}|$ jest
 ograniczone przez napięcie $E$ zasilające wzmacniacz.
 
 ### Napięcie przerzutu
@@ -400,3 +400,66 @@ $2 E$. W układzie $V_p \approx 1\,\text{V}$, a napięcie zasilające $E \approx
 \end{figure}
 
 ## Multiwibrator astabliny
+
+Zadanie polegało na badaniu cech multiwibratora astabilnego.
+
+### Wprowadzenie
+
+Multiwibrator astabilny to wzmacniacz operacyjny, niewymagający doprowadzenia
+zewnętrznego napięcia wejściowego, dzięki wykorzystaniu kondensatora ładowanego
+naprzemian ładunkiem o przeciwnym znaku.
+
+Układ przedstawiony jest na rys. \ref{fig:5-0}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/05-opamp-latch-nonstable.png}
+  \caption{Multiwibrator astabilny. Źródło: instrukcja laboratoryjna.}
+  \label{fig:5-0}
+\end{figure}
+
+Napięcie oznaczone punktem (1) nazywa się napięciem wejściowym $U_{we}$. Jest
+zadane przez napięcie na okładkach kondensatora.
+
+### Przebieg impulsów
+
+Należało zaobserwować przebieg impulsów w układzie. Napięcie wejściowe (1) oraz
+wyjściowe przedstawia rys. \ref{fig:5-1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/tek00733.png}
+  \caption{Multiwibrator astabilny.}
+  \label{fig:5-1}
+\end{figure}
+
+### Okres przerzutów
+
+Okres przerzutów multiwibratora astabilnego wynosi (oznaczenia jak na rys
+\ref{fig:5-0}):
+
+\begin{equation}
+\begin{aligned}
+T &= 2 C R \ln\left(\frac{1+\gamma}{1-\gamma}\right)\\
+\gamma &= \frac{R_2}{R_1+R_2}
+\end{aligned}
+\end{equation}
+
+W zadaniu należało wyznaczyć okres przerzutów dla kilku różnych wartości
+iloczynu $CR$ oraz kilku różnych wartości współczynnika $\gamma$.
+
+Przy pomocy kursorów mierzyłem połowę okresu przebiegu wejściowego. Dodatkowo,
+w oscyloskopie włączyłem automatyczny pomiar częstotliwości, aby zweryfikować
+odczytany okres.
+
+Pomiary wraz z parametrami układu zebrałem w tabelce:
+
+tek | $C [\text{nF}]$ | $R_f [\text{k}\Omega]$ | $R_1 [\text{k}\Omega]$ | $R_2 [\text{k}\Omega]$ | $f [\text{Hz}]$ | $\gamma$ | $T [\text{ms}]$ | $T\, \text{(pomiar)}$
+--- | ------ | ------ | ------ | ------ | ------ | --------- | -------- | ----------
+736 | 93.0 | 10.06 | 9.90 | 9.90   | 461  | 0.5          | 2.0556794 | 2.200
+737 | 9.11 | 10.06 | 9.90 | 9.90   | 4026 | 0.5          | 0.2013682 | 0.2472
+738 | 93.0 | 10.06 | 9.90 | 46.20  | 218  | 0.8235294118 | 4.3698601 | 4.520
+739 | 93.0 | 10.06 | 9.90 | 19.920 | 317  | 0.6680080483 | 3.0205662 | 3.072
+
+Wartości wyznaczone przez pomiar kursorami są zgodne z wartościami wyliczonymi
+z teoretycznej zależności.
