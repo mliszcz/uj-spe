@@ -300,4 +300,103 @@ Charakterystyka fazowa tego układu przedstawiona jest na rys. \ref{fig:3-2}.
 
 ## Przerzutnik Schmidta
 
+Zadanie polegało na skonstruowaniu przerzutnika Schmidta i zaobserwowaniu jego
+właściwości.
+
+### Wprowadzenie
+
+Przerzutnik Schmidta to wzmacniacz operacyjny z dodatnią pętlą sprzężenia
+zwrotnego, przedstawiony na rys. \ref{fig:4-0}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/04-opamp-latch-schmidt.png}
+  \caption{Przerzutnik Schmidta. Źródło: instrukcja laboratoryjna.}
+  \label{fig:4-0}
+\end{figure}
+
+Napięcie na wejściu "+" wynosi:
+
+\begin{equation}
+U_{+} = \frac{R_2}{R_1+R_2} U_{wy} = U_{p}
+\end{equation}
+
+Napięcie to nazywane jest napięciem przerzuti, ponieważ jeżeli $|U_{we}|$
+przekroczy tę wartość, $U_{wy} zmienia znak na przeciwny.
+
+Ponieważ wzmocnienie idealnego wzmacniacza jest nieskończone, $|U_{wy}| jest
+ograniczone przez napięcie $E$ zasilające wzmacniacz.
+
+### Napięcie przerzutu
+
+Do budowy układu wykorzystałem elementy:
+
+* $R_1=9.96\,\text{k}\Omega$,
+* $R_2=0.990\,\text{k}\Omega$.
+
+Dla sygnału wejściowego $U_{we} = 2\,\text{Vpp} = 1\,\text{V}$ daje to
+teoretyczne napięcie przerzutu:
+
+\begin{equation}
+U_{p} \approx 0.9 U_{we} = 0.90\,\text{V}
+\end{equation}
+
+Zaobserwowany przebieg dla sygnału sinusoidalnego z $f=10\,\text{kHz}$
+przedstawiony jest na rys. \ref{fig:4-1}. Analogiczny przebieg dla
+$f=2\,\text{kHz}$ przedstawiony jest na rys. \ref{fig:4-2}. Nieznaczne
+zmniejszenie napięcia powoduje zanik efektu przerzutów (rys. \ref{fig:4-3}).
+Odczytane napięcie przerzutu to $U_p=2.049\,\text{Vpp} \approx 1.0\,\text{V}$.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/tek00708.png}
+  \caption{Przerzutnik Schmidta, $f=10\,\text{kHz}$.}
+  \label{fig:4-1}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/tek00713.png}
+  \caption{Przerzutnik Schmidta, $f=2\,\text{kHz}$.}
+  \label{fig:4-2}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/tek00712.png}
+  \caption{Przerzutnik Schmidta, $f=2\,\text{kHz}$. Napięcie przerzutu.}
+  \label{fig:4-3}
+\end{figure}
+
+### Sygnał trójkątny
+
+Należało zaobserwować wyjście z układu dla sygnału trójkątnego. Przedstawia
+je rys. \ref{fig:4-4}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/tek00729.png}
+  \caption{Przerzutnik Schmidta, $f=4\,\text{kHz}$. Sygnał trójkątny.}
+  \label{fig:4-4}
+\end{figure}
+
+### Pętla histerezy
+
+Pętla histerezy układu przedstawiona jest na rys. \ref{fig:4-5}. Kursorami
+mierzyłem wysokość oraz szerokość pętli. Otrzymane wartości to:
+
+* $U_x = 2.09\,\text{V}$,
+* $U_y = 21.0\,\text{V}$.
+
+Zgodnie z teorią pierwsza z wartości powinna wynosić $2 V_p$, natomiast druga
+$2 E$. W układzie $V_p \approx 1\,\text{V}$, a napięcie zasilające $E \approx
+12\,\text{V}$. Wyniki są więc zgodne z wartościami teoretycznymi.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/tek00723.png}
+  \caption{Przerzutnik Schmidta, $f=2\,\text{kHz}$. Pętla histerezy.}
+  \label{fig:4-5}
+\end{figure}
+
 ## Multiwibrator astabliny
