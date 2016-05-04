@@ -1,0 +1,4 @@
+.Amplilude 68.00mV
+.Amplilude 68.00mV
+.4. Phase 72.816 °
+\- Frequency 999.2 Hz
