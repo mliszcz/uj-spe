@@ -169,3 +169,55 @@ Dopasowana prosta przedstawiona jest na rys. \ref{fig:3-0}.
   \caption{Pomiar wzmocnienia napięciowego.}
   \label{fig:3-0}
 \end{figure}
+
+## Pasmo przenoszenia
+
+Należało zbadać pasmo przenoszenia wzmacniacza. W tym celu wyznaczyłem
+charakerystyki amplitudową i fazową, przy napięciu wejściowym wynoszącym
+$U_{we} = 80.0,\text{mVpp}$.
+
+Częstotliwość graniczna to częstotliwość, gdzie wzmocnienie układu spada o
+$-3\,\text{dB}$ w stosunku do wartości maksymalnej (równoważne spadkowi o
+połowę). Wiąże się to ze spadkiem amplitudy do $0.707$ wartości maksymalnej
+($-3\,\text{[dB]} \approx 20 \log(0.707))$.
+
+
+Wyniki pomiarów przedstawiłem na rys. \ref{fig:4-0} oraz \ref{fig:4-1}.
+Przyjmując że średnie maksymalne wzmocnienie wynosi około $41.50$, wzmocnienie
+graniczne to około $29.00$. Odczytałem następujące wartości częstotliwości
+graniczne:
+
+* $f_d \approx 30\,\text{Hz}$,
+* $f_g \approx 185000\,\text{Hz}$.
+
+Teoretyczna zależność dolnej częstotliwości granicznej od parametrów układu to:
+
+\begin{equation}
+\begin{aligned}
+f_d &= 1 / (2\pi R_t C_E)\\
+R_t &= r_e + R_{E1}
+\end{aligned}
+\end{equation}
+
+Podstawiając, otrzymałem wartość zgodną z wartością wyznaczoną pomiarami:
+
+\begin{equation}
+f_d \approx 26.23\,\text{Hz}
+\end{equation}
+
+Otrzymana wartość jest zgodna z wartością odczytaną z wykresu. Górnej
+częstotliwości granicznej nie można w prosty sposób wyliczyć teoretycznie.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/{fig-04-ampl-logscale--results04.csv}.png}
+  \caption{Pomiar wzmocnienia w funkcji częstotliwości.}
+  \label{fig:4-0}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/{fig-04-phase-logscale--results04.csv}.png}
+  \caption{Pomiar przesunięcia fazowego w funkcji częstotliwości.}
+  \label{fig:4-1}
+\end{figure}
