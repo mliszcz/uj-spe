@@ -32,7 +32,7 @@ przedstawiony jest na rys. \ref{fig:ampl-01}.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.5\textwidth]{images/ampl-01.png}
+  \includegraphics[width=0.6\textwidth]{images/ampl-01.png}
   \caption{Wzmacniacz tranzystorowy. Źródło: instrukcja laboratoryjna.}
   \label{fig:ampl-01}
 \end{figure}
@@ -115,3 +115,57 @@ U_C &= U_{CC} - R_C I_C \approx 9.740\,\text{V}
 \end{equation}
 
 Wynik znów jest zgodny ze zmierzoną wartością.
+
+## Wzmocnienie i zakres liniowości wzmacniacza
+
+Dla częstotliwości $f = 1\,\text{kHz}$ należało zmierzyć wzmocnienie oraz
+wyznaczyć zakres liniowości wzmacniacza.
+
+Teoretyczne wzmocnienie napięciowe powinno wynosić:
+
+\begin{equation}
+k = \frac{U_{wy}}{U_{we}} \approx - \frac{R_C}{r_e + R_{E1}}
+\end{equation}
+
+Oznaczenia jak na rysunku układu. $r_e$ to rezystancja dynamiczna złącza
+emiterowego i należy tutaj przyjąć $r_e \approx 26\,\text{mV}/I_E$:
+
+\begin{equation}
+k \approx - \frac{R_C}{26\,\text{mV} \cdot R_E/U_E + R_{E1}} \approx -43.296
+\end{equation}
+
+Wzmocnienie jest ujemne, ponieważ sygnał wyjściowy jest przesunięty w fazie o
+$180\degree$.
+
+W celu eksperymentalnego pomiaru wzmocnienia, dla napięć wejściowych z zakresu
+$50-300\,\text{mVpp}$ mierzyłem napięcie wyjściowe. Do danych pomiarowych
+dopasowałem funkcję (z pominięciem znaku -):
+
+\begin{equation}
+U_{wy}(U_{we}) = k U_{we}
+\end{equation}
+
+Dopasowywałem kolejne punkty powyżej $U_{we} = 200\,\text{mVpp}$ dopóki błąd
+dopasowania nie osiągnął globalnego minimum. Otrzymałem wartość współczynika
+$k$:
+
+\begin{equation}
+k = 41.50(19)
+\end{equation}
+
+Otrzymany wynik jest zgodny z wartością wyliczoną teoretycznie. W ten sposób
+ustaliłem też zakres liniowości wzmacniacza - ostatnia akceptowalna wartość
+$U_{wy}$ była dla:
+
+\begin{equation}
+U_{we}^{\text{max}} = 220.0\,\text{mVpp}
+\end{equation}
+
+Dopasowana prosta przedstawiona jest na rys. \ref{fig:3-0}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/{fig-03-ampl-nologscale--results03.csv}.png}
+  \caption{Pomiar wzmocnienia napięciowego.}
+  \label{fig:3-0}
+\end{figure}
