@@ -221,3 +221,98 @@ częstotliwości granicznej nie można w prosty sposób wyliczyć teoretycznie.
   \caption{Pomiar przesunięcia fazowego w funkcji częstotliwości.}
   \label{fig:4-1}
 \end{figure}
+
+## Oporność wejściowa i wyjściowa
+
+Zadanie polegało na pomiarze oporności wejściowej i wyjściowej.
+
+### Oporność wejściowa
+
+Oporność wejściową należy mierzyć dołączając na wejście znany opór $R$, tak
+jak to przedstawia rys. \ref{fig:imp-in-01}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.3\textwidth]{images/imp-in-01.png}
+  \caption{Pomiar oporu wejściowego. Źródło: instrukcja laboratoryjna.}
+  \label{fig:imp-in-01}
+\end{figure}
+
+Opór $R$ wraz z oporem wejściowym $R_{we}$ utworzy dzielnik napięcia:
+
+\begin{equation}
+U_{we}' = \frac{R_{we}}{R+R_{we}} U_{we}
+\end{equation}
+
+Dokonałem kilkukrotnego pomiaru napięć i do zmierzonych wartości dopasowałem
+funkcję przedstawioną powyżej. Otrzymałem opór wejściowy:
+
+\begin{equation}
+R_{we} = 2109(60)\,\Omega
+\end{equation}
+
+Dopasowaną prostą przedstawia rys. \ref{fig:5-0}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/{fig-05-in-ampl-nologscale--results05in.csv}.png}
+  \caption{Pomiar rezystancji wejściowej.}
+  \label{fig:5-0}
+\end{figure}
+
+Rezystancję wejściową można obliczyć korzystając z teoretycznych zależności:
+
+\begin{equation}
+\begin{aligned}
+R_{we} &= \left( \frac{1}{R_B} + \frac{1}{\beta(r_e+R_{E1})} \right)^{-1} \\
+R_B &= \left( \frac{1}{R_1} + \frac{1}{R_2} \right)^{-1}
+\end{aligned}
+\end{equation}
+
+Przyjąłem $\beta = 160$, otrzymując teoretyczny opór wejściowy:
+\begin{equation}
+R_{we} \approx 2019\,\Omega
+\end{equation}
+
+Po uwzględnieniu niepewności pomiarowych wynik ten jest bardzo zbliżony do
+wartości wyznaczonej doświadczalnie.
+
+### Oporność wyjściowa
+
+Analogicznie obliczyłem oporność wyjściową. Układ pomiarowy przedstawia rys.
+\ref{fig:imp-out-01}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.45\textwidth]{images/imp-out-01.png}
+  \caption{Pomiar oporu wyjściowego. Źródło: instrukcja laboratoryjna.}
+  \label{fig:imp-out-01}
+\end{figure}
+
+Podając na wejście $U_{we}$
+mierzyłem $U_{wy}$ nieobciążonego wzmacniacza. $U_{wy} = k U_{we}$.
+Następnie dołączałem obciążenie o znanym oporze $R_{obc}$ i mierzyłem spadek
+napięcia na tym oporze:
+
+\begin{equation}
+U_{wy}' = \frac{R_{obc}}{R_{obc} + R_{wy}} k U_{we} =
+\frac{R_{obc}}{R_{obc} + R_{wy}} U_{wy}
+\end{equation}
+
+Do wyników pomiarów dopasowałem prostą przedstawioną zależnością powyżej.
+Otrzymałem parametr:
+
+\begin{equation}
+R_{wy} \approx 5941(50)\,\Omega
+\end{equation}
+
+Oczekiwana oporność wyjściowa powinna być zbliżona do $R_C = 5590\,\Omega$.
+Udało mi się potwierdzić ten wynik. Dopasowana prosta przedstawiona jest na
+rys. \ref{fig:5-1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/{fig-05-out-ampl-nologscale--results05out-combined.csv}.png}
+  \caption{Pomiar rezystancji wyjściowej.}
+  \label{fig:5-1}
+\end{figure}
