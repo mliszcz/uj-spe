@@ -51,6 +51,8 @@ U_{wy} = k \cdot U_{we}
 Powyższa zależność jest prawdziwa w ograniczonym zakresie napięć wejściowych -
 jest to tak zwany zakres liniowości, wyznaczony w dalszej części ćwiczenia.
 
+Sygnał wyjściowy jest przesunięty w fazie o $180\degree$ - stąd $k < 0$.
+
 Układ ma charakterystykę filtra środkowoprzepustowego, częstotliwości graniczne
 wyznaczone są w dalszej części.
 
@@ -315,4 +317,47 @@ rys. \ref{fig:5-1}.
   \includegraphics[width=0.6\textwidth]{plots/{fig-05-out-ampl-nologscale--results05out-combined.csv}.png}
   \caption{Pomiar rezystancji wyjściowej.}
   \label{fig:5-1}
+\end{figure}
+
+## Odłączenie $C_E$ i $R_{E1}$
+
+Rolą pojemności $C_E$ i małego oporu $R_{E1}$ było zamknięcie obwodu tak, by
+składowa zmienna nie była przesyłana przez znacznie większy opór $R_E$. Po
+usunięciu tych elementów teoretyczne wzmocnienie to:
+
+\begin{equation}
+k = - \frac{R_C}{r_e + R_E} \approx - \frac{R_C}{R_E} \approx 1.873
+\end{equation}
+
+Ustawiłem częstotliwość na $f = 1\,\text{kHz}$. Mierzyłem stosunek amplitudy
+sygnału wyjściowego do wejściowego. Następnie mierzyłem stosunek sygnału na
+na rezystorze emitera do sygnału wejściowego.
+
+Stosunek amplitudy sygnału wyjściowego do wejściowego przedstawia rys.
+\ref{fig:6-0}. Do danych pomiarowych dopasowałem prostą. Otrzymałem
+współczynnik wzmocnienia:
+
+\begin{equation}
+k = 1.8178(72)
+\end{equation}
+
+Wynik jest zgodny z wartością teoretyczną.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/{fig-06-a-ampl-nologscale--results06a.csv}.png}
+  \caption{Stosunek amplitudy sygnału wyjściowego do wejściowego.}
+  \label{fig:6-0}
+\end{figure}
+
+Zmierzyłem też stosunek sygnału na rezystorze emiterowym. W takiej
+konfiguracji jest bardzo zbliżony do sygnału wejściowego, a przesunięcie
+fazowe nie występuje. Pomiary przedstawia rys. \ref{fig:6-1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{plots/{fig-06-b-ampl-nologscale--results06b.csv}.png}
+  \caption{Stosunek spadku napięcia na rezystorze emiterowym do sygnału
+    wejściowego.}
+  \label{fig:6-1}
 \end{figure}
