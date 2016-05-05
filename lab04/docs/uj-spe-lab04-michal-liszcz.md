@@ -1,0 +1,117 @@
+---
+title: Pracownia elektroniczna
+subtitle: |
+  ćw. 4: Wzmacniacz tranzystorowy w układzie o wspólnym emiterze.\
+  prowadzący: dr hab. Janusz Brzychczyk\
+author: Michał Liszcz
+date: 22.04.2016
+toc: true
+geometry: margin=6em
+header-includes:
+    - \usepackage{mathrsfs}
+    - \usepackage{amssymb}
+    - \usepackage{empheq}
+    - \usepackage{braket}
+    - \usepackage{empheq}
+    - \usepackage{graphicx}
+    - \usepackage{float}
+    - \usepackage{color}
+    - \usepackage{listings}
+    - \usepackage{gensymb}
+    - \usepackage{caption}
+    - \usepackage{subcaption}
+---
+
+\newpage
+
+# Wstęp
+
+Ćwiczenie polegało na zbadaniu własności układu wzmacniacza tranzystorowego,
+opartego o tranzystor bipolarny w układzie o wspólnym emiterze. Badany układ
+przedstawiony jest na rys. \ref{fig:ampl-01}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/ampl-01.png}
+  \caption{Wzmacniacz tranzystorowy. Źródło: instrukcja laboratoryjna.}
+  \label{fig:ampl-01}
+\end{figure}
+
+We wzmacniaczu w układzie wspólnego emitera, emiter przyłączony jest do masy,
+napięcie wejściowe podawane jest na obwód baza-emiter, natomiast wyjściowe
+otrzymywane jest w obwodzie kolektor-emiter.
+
+Sygnał wyjściowy to $k$-krotnie wzmocniony sygnał wejściowy, gdzie $k$ to
+współczynnik wzmocnienia napięciowego (dla składowych zmiennych):
+
+\begin{equation}
+U_{wy} = k \cdot U_{we}
+\end{equation}
+
+Powyższa zależność jest prawdziwa w ograniczonym zakresie napięć wejściowych -
+jest to tak zwany zakres liniowości, wyznaczony w dalszej części ćwiczenia.
+
+Układ ma charakterystykę filtra środkowoprzepustowego, częstotliwości graniczne
+wyznaczone są w dalszej części.
+
+# Wykonane zadania
+
+W ramach laboratorium wykonałem 5 ćwiczeń opisanych w instrukcji.
+
+## Zmontowanie układu
+
+Zbudowałem układ opisany w poprzednim rozdziale.
+
+Do budowy układu wykorzystałem następujące elementy:
+
+* $R_1 = 9.99\,\text{k}\Omega$,
+* $R_2 = 2.994\,\text{k}\Omega$,
+* $R_E = 2.985\,\text{k}\Omega$,
+* $R_{E1} = 102.2\,\Omega$,
+* $R_C = 5.590\,\text{k}\Omega$,
+* $C_1 = C_2 = C_E = 47\,\mu\text{F}$.
+
+Układ był zasilany napięciem $U_{CC} = 15\,\text{V}$.
+
+## Wyznaczanie napięć stałych
+
+Przy użyciu multimetra mierzyłem napięcia stałe. Otrzymałem następujące
+wartości (mierząc względem masy):
+
+* $U_B = 3.473\,\text{V}$,
+* $U_E = 2.884\,\text{V}$,
+* $U_C = 9.69\,\text{V}$.
+
+Dodatkowo zmierzyłem:
+
+* $U_{BE} = 0.628\,\text{V}$,
+* $U_{CE} = 6.86\,\text{V}$.
+
+Zgodnie z teorią napięcie $U_B$ będzie zadane przez dzielnik napięcia $R1$,
+$R2$ oraz napięcie $U_{CC}$:
+
+\begin{equation}
+U_B \approx \frac{R_2}{R_1+R_2} U_{CC} \approx 3.459\,\text{V}
+\end{equation}
+
+Otrzymana wartość teoretyczna jest zgodna z wartością zmierzoną. Ponieważ
+tranzystor zbudowany jest ze złącz krzemowych, $U_{BE}$ powinno wynosić około
+$0.65\,\text{V}$. Pomiar potwierdza tę wartość. Napięcie $U_E$ powinno być:
+
+\begin{equation}
+U_E \approx U_B - U_{BE} = 2.809\,\text{V}
+\end{equation}
+
+Wynik znów jest bardzo zbliżony do zmierzonej wartości. W celu obliczenia
+napięcia kolektora należy założyć że prąd kolektora jest w przybliżeniu równy
+prądowi emitera (prąd bazy pomijalnie mały). Napięcie na kolektorze to
+napięcie zasilające pomniejszone o spadek napięcia na oporniku $R_C$:
+
+\begin{equation}
+\begin{aligned}
+I_C &\approx I_E = \frac{U_E}{R_E} \approx 0.941\,\text{mA}\\
+U_C &= U_{CC} - R_C I_C \approx 9.740\,\text{V}
+\end{aligned}
+\end{equation}
+
+Wynik znów jest zgodny ze zmierzoną wartością.
