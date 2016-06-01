@@ -274,3 +274,54 @@ Poprawność skonstruowanych układów potwierdziłem doświadczalnie.
 TODO dodac schematy
 
 ## Wyłączna suma logiczna
+
+TODO
+
+## -
+
+*Zadania nie należało wykonywać*.
+
+## Czas propagacji impulsu
+
+Należało skonstruować układ jak na rys. \ref{fig:6-1}. Na wejście układu
+podawałem sygnał prostokątny o częstotliwości 200 kHz.
+Na oscyloskopie sprawdzałem jak sygnał wyjściowy opóźniony jest względem
+sygnału wejściowego.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/fig-61.png}
+  \caption{Badany układ. (Żródło: instrukcja laboratoryjna)}
+  \label{fig:6-1}
+\end{figure}
+
+W układzie sygnał będzie poddawany dwukrotnej negacji. Przesunięcie czasowe
+między sygnałem wejściowym a wyjściowym to zatem:
+
+\begin{equation}
+t = 2 t_p = t_{pLH} + t_{pHL}
+\end{equation}
+
+Przykładowy obraz obserwowany na oscyloskopie przedstawia rys. \ref{fig:6-2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00010.png}
+  \caption{Pomiar przesunięcia fazowego. Sygnał prostokątny, f = 200 kHz.}
+  \label{fig:6-2}
+\end{figure}
+
+Z wykresów odczytałem:
+
+\begin{equation}
+\begin{aligned}
+2 t_p = 24.60 \cdot 10^{-9} \text{s} \qquad \Rightarrow
+t_p = 12.30 \cdot 10^{-9} \text{s}
+\end{aligned}
+\end{equation}
+
+Czas propagacji sygnału w bramce NAND wykonanej w technologii TTL powinien
+mieścić się w zakresie 15 - 20 ns. Wartość ta będzie różna dla różnych bramek,
+wynika to z ich wewnętrznej budowy. Otrzymany wynik zatem jest akceptowalny.
+
+## Czas propagacji w generatorze
