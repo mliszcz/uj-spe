@@ -269,13 +269,70 @@ a + b = \overline{\overline{a \cdot b}} =
 \overline{ \overline{a \cdot a} \cdot \overline{b \cdot b} }
 \end{equation}
 
-Poprawność skonstruowanych układów potwierdziłem doświadczalnie.
+Reprezentacja powyższych wyrażej w postaci bramek logicznych przedstawiona
+jest na rys. \ref{fig:3-1} oraz \ref{fig:3-2}.
 
-TODO dodac schematy
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.35\textwidth}
+    \includegraphics[width=\textwidth]{images/fig-01-nand-and.png}
+    \caption{Konstrukcja bramki AND.}
+    \label{fig:3-1}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.35\textwidth}
+    \includegraphics[width=\textwidth]{images/fig-01-nand-or.png}
+    \caption{Konstrukcja bramki OR.}
+    \label{fig:3-2}
+  \end{minipage}
+\end{figure}
+
+Poprawność skonstruowanych układów potwierdziłem doświadczalnie.
 
 ## Wyłączna suma logiczna
 
-TODO
+Suma logiczna modulo 2 różni się od zwykłej sumy tylko jednym wpisem w tabeli
+prawdy.
+
+\begin{center}
+\begin{tabular}{c|c|c|c|c}
+  $a$ & $b$ & & $a + b$ & $a \oplus b$ \\
+  \hline \hline
+  0 & 0 & & 0 & 0 \\
+  \hline
+  0 & 1 & & 1 & 1 \\
+  \hline
+  1 & 0 & & 1 & 1 \\
+  \hline
+  1 & 1 & & 1 & 0 \\
+\end{tabular}
+\end{center}
+
+Należy wyzerować wyjście z układu OR jeżeli oba wejścia są w stanie wysokim.
+Należy to zrobić przy pomocy tylko jednej bramki (trzy z dostępnych
+wykorzystane zostały do budowy OR).
+
+W tym celu do układu OR można wpiąć dodatkową bramkę NAND z wejściami $a$ i $b$.
+
+Jeżeli
+oba będą 1, to wyjście tej bramki będzie 0. W przeciwnym przypadku będzie 1.
+Wyjście z tej dodatkowej bramki należy podłączyć do wejść bramki OR.
+
+Jeżeli dodatkowa bramka będzie 0, to obie bramki z układu OR będą 1 niezależnie
+od drugiego wejścia. Końcowy NAND da wynik 0 z dwóch wejść w stanie 1.
+
+Jeżeli dodatkowa bramka będzie 1, to obie bramki z układu OR będą odwracać
+drugie wejście. Układ będzie działał tak jak układ OR.
+
+Schemat rozwiązania przedstawiony jest na rys. \ref{fig:4-1}. Jego poprawność
+zweryfikowałem eksperymentalnie w trakcie laboratorium.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.40\textwidth]{images/fig-01-nand-xor.png}
+  \caption{Konstrukcja bramki XOR.}
+  \label{fig:4-1}
+\end{figure}
 
 ## -
 
