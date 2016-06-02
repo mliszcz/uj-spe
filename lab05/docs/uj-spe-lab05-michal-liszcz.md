@@ -525,6 +525,86 @@ generatora. Uzyskany obraz przedstawiony jest na rys. \ref{fig:10-2}.
 
 ## Układ redukujący częstotliwość
 
+Należało zbudować układ redukujący częstotliwość (dzielący przez dwa).
+
+W tym celu wykorzystałem jeden licznik $T$ dostępny w badanym układzie. Wejście
+*toggle* było cały czas w stanie wysokim (1). Na wejście zegarowe podawałem
+sygnał prostokątny o częstotliwości $f = 1 \, \text{kHz}$. Na opadającym
+zboczu sygnału zegarowego (a więc co jeden okres) następuje przełączenie
+zapamiętanej wartości. Po drugim okresie sygnału zegarowego zapamiętana
+wartość będzie z powrotem równa wartości początkowej. Uzyskany układ dzieli
+zatem częstotliwość przez dwa. Przedstawia to rys. \ref{fig:11-1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/fig-111.png}
+  \caption{Dzielenie częstotliwości. (Żródło: instrukcja laboratoryjna).}
+  \label{fig:11-1}
+\end{figure}
+
+Poprawność działania układu potwierdziłem obserwując przebieg sygnałów na
+ekranie oscyloskopu. Odczyty przedstawia rys. \ref{fig:11-2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00018.png}
+  \caption{Dwukrotny spadek częstotliwości na wyjściu przerzutnika $T$.}
+  \label{fig:11-2}
+\end{figure}
+
 ## Licznik modulo 16
 
-## Licznik modulo 10
+Przy użyciu czterech połączonych szeregowo przerzutników $T$ należało zbudować
+licznik modulo 16. Schemat układu przedstawia rys. \ref{fig:12-1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{images/fig-06-t-counter.png}
+  \caption{Licznik 4-bitowy. (Żródło: slajdy z wykładów)}
+  \label{fig:12-1}
+\end{figure}
+
+Układ zlicza impulsy pojawiające się na wejściu zegarowym. Pierwszy przerzutnik
+przełącza stan przy każdym impulsie (najmłodszy bit równy na przemian 0 i 1).
+Każdy kolejny przerzutnik zmienia stan dwa razy rzadziej niż poprzedni
+(wyjaśnione w poprzednim rozdziale).
+
+Układ generuje sekwencję kolejnych liczb: 0000, 0001, 0010, 0011, 0100, ...,
+1111, 0000. Jest to więc licznik modulo 16.
+
+## Licznik modulo 11
+
+Przy użyciu czterech przerzutników $T$ (i kilku bramek NAND) można zbudować
+dowolny licznik modulo N, N<16.
+
+W ćwiczeniu należało zbudować licznik modulo 11.
+
+Każdy przerzutnik $T$ wyposażony jest w wejście programujące, pozwalające na
+ustawienie jego wartości na 0 poprzez podanie stanu niskiego.
+
+Najprostszy liczniki modulo N można zbudować poprzez reset całego układu po
+osiągnięciu wartości N. Wystarczy odwrócić bity 0 i na wejścia resetujące
+liczniki podać iloczyn całości.
+
+Dla $N = 11_{10} = 1011_{2} = N_3N_2N_1N_0$ na wejścia
+resetujące liczniki podajemy zatem: $AND(N_3, NOT(N_2), N_1, N_0)$.
+
+Dysponując jedynie czterema bramkami NAND takie rozwiązanie nie zawsze jest
+możliwe.
+
+Reset wszystkich liczników układu UCY7493 odbywa się poprzez podanie stanu
+wysokiego na wejścia 2 i 3. Aby zresetować licznik na wartości
+$N = 11_{10} = 1011_{2} = N_3N_2N_1N_0$
+wystarczy zresetować go w momencie kiedy po raz pierwszy zajdzie sytuacja
+$N_3 = 1, N_1 = 1, N_0 = 1$. Jeżeli poprzednie warunki są spełnione, to
+zawsze w tym liczniku będzie $N_2 = 0$, bo dla $N_2 = 1$ jest
+$N = 1111_{2} = 15_{10}$, a tej liczby nigdy nie osiągniemy licząc modulo 11.
+
+Na wejścia resetujące należy więc podać:
+
+* wejście 2: $N_3$,
+* wejście 3: $AND(N_1, N_0) = NOT(NAND(N_1, N_0)) =
+  NAND(NAND(N_1, N_0), NAND(N_1, N_0))$.
+
+Do realizacji układu wystarczą zatem dwie bramki NAND. Rozwiązanie
+potwierdziłem eksperymentalnie na płytce montażowej.
