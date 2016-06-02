@@ -415,6 +415,62 @@ Powyższą tabelkę sprawdziłem doświadczalnie w trakcie wykonywania ćwiczeni
 
 ## Przerzutnik Schmitta
 
+Należało wykonać dwa zadania.
+
+### Odpowiedź bramki NAND na sygnał trójkątny
+
+Na wejście bramki NAND (NOT) podawałem powolny sygnał trójkątny o
+częstotliwośći 50 Hz, amplitudzie 5 Vpp i offsetcie 2.5 V. Obraz uzyskany na
+oscyloskopie przedstawia rys. \ref{fig:9-1}. Z rysunku można odczytać przy
+jakim napięciu sygnał zostaje uznany za niski lub wysoki.
+
+Sygnał wejściowy poniżej 1.3 V to sygnał niski, dający na wyjściu bramki NOT
+stan wysoki. Sygnał wejściowy większy niż 1.3 V traktowany jest jak stan wysoki
+i na wyjściu bramki NOT daje stan niski.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00014.png}
+  \caption{Odpowiedź bramki NOT na sygnał trójkątny. f = 50 Hz.}
+  \label{fig:9-1}
+\end{figure}
+
+### Przerzutnik Schmitta
+
+Należało skonstrować i zaobserwować działanie przerzutnika Schmitta.
+
+Przerzutnik Schmitta to układ o dwóch progach przełączania (górnym i dolnym).
+Służy do generacji sygnałów prostokątnych. Oczekiwany przebieg na wyjściu
+przedstawia rys. \ref{fig:9-2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/Forme_d_onde_symetrique.png}
+  \caption{Działanie przerzutnika Schmitta. Źródło\protect\footnotemark[1].}
+  \label{fig:9-2}
+\end{figure}
+
+\footnotetext[1]{\url{http://www.electronique-et-informatique.fr/anglais/Digit/Digit_6TS1.html}}
+
+Na wejście układu podawałem sygnał prostokątny o małej częstotliwości, 150 Hz,
+500 Hz i 1 kHz. W żadnym przypadku nie udało mi się uzyskać oczekiwanego
+sygnału prostokątnego na wyjściu przerzutnika. Otrzymane przebiegi
+przedstawione są na rys. \ref{fig:9-3} oraz \ref{fig:9-4}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00024.png}
+  \caption{Przerzutnik Schmitta. f = 150 Hz.}
+  \label{fig:9-3}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00025.png}
+  \caption{Przerzutnik Schmitta. f = 1 kHz.}
+  \label{fig:9-4}
+\end{figure}
+
 ## Generator drgań prostokątnych
 
 ## Układ redukujący częstotliwość
