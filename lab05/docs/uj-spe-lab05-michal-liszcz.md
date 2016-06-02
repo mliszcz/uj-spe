@@ -325,3 +325,100 @@ mieścić się w zakresie 15 - 20 ns. Wartość ta będzie różna dla różnych
 wynika to z ich wewnętrznej budowy. Otrzymany wynik zatem jest akceptowalny.
 
 ## Czas propagacji w generatorze
+
+Należało wyznaczyć średni czas propagacji przez bramkę NAND poprzez pomiar
+okresu drgań generatora zbudowanego z trzech takich bramek. Badany układ
+przedstawia rys. \ref{fig:7-1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/fig-71.png}
+  \caption{Badany układ. (Żródło: instrukcja laboratoryjna)}
+  \label{fig:7-1}
+\end{figure}
+
+
+Przełączenie stanu następuje w wyniku zastosowania sprzężenia zwrotnego.
+Od zmiany stanu na wyjściu do powrotu do takiego stanu mija czas:
+
+\begin{equation}
+T = t_{pLH} + t_{pHL} + t_{pLH} + t_{pHL} + t_{pLH} + t_{pHL} =
+3 (t_{pLH} + t_{pHL}) = 6 t_p
+\end{equation}
+
+Z oscyloskopu odczytałem okres $T = 71.09 \cdot 10^{-9} \text{s}$. Daje to
+średni czas propagacji:
+
+\begin{equation}
+t_p = 11.84 \cdot 10^{-9} \text{s}
+\end{equation}
+
+Otrzymany wynik jest bardzo zbliżony do wyniku otrzymanego w poprzednim
+zadaniu. Sygnał na wyjściu generatora przedstawia rys. \ref{fig:7-2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00007.png}
+  \caption{Pomiar okresu generatora.}
+  \label{fig:7-2}
+\end{figure}
+
+## Przerzutnik RS
+
+Należało zbudować przerzutnik RS z bramek NAND. We wstępie do sprawozdania
+opisany opisałem przerzutnik RS zbudowany z bramek NOR (pokazany na rys.
+\ref{fig:8-2}). Bramki NOR należy zastąpić bezpośrednio bramkami NAND.
+Wejścia *set* i *reset* są w takim przypadku aktywne w stanie niskim. Stąd
+oznacza się je czasem przez $\overline{R}$ i $\overline{S}$. Sposób kostrukcji
+takiego przerzutnika przedstawia rys. \ref{fig:8-1}.
+
+\begin{figure}[H]
+  \centering
+  \begin{minipage}[b]{0.35\textwidth}
+    \includegraphics[width=\textwidth]{images/fig-03-rs-latch.png}
+    \caption{Przerzutnik $RS\, NOR$.}
+    \label{fig:8-2}
+  \end{minipage}
+  \hfill
+  \begin{minipage}[b]{0.35\textwidth}
+    \includegraphics[width=\textwidth]{images/fig-81.png}
+    \caption{Przerzutnik $\overline{RS}\, NAND$.}
+    \label{fig:8-1}
+  \end{minipage}
+\end{figure}
+
+Przerzutnik RS NAND można potraktować jak przerzutnik sterowany poziomem
+wysokim, przyjmując $R = \overline{S}$ oraz $S = \overline{R}$. W takim wypadku
+niedozwolona staje się kombinacja $R = S = 0$ natomiast stan pamiętania to
+$R = S = 1$.
+
+W układzie nadal występuje problem hazardu stanów, który można zaobserwować
+tym razem jeżeli oba wejścia zmienią jednocześnie stan z 0 na 1.
+
+Tabelka przejść tego układu przedstawiona jest poniżej.
+
+\begin{center}
+\begin{tabular}{c|c|c}
+  $R \text{(\~{}S na rysunku)}$ & $S \text{(\~{}R na rysunku)}$ & $Q$ \\
+  \hline \hline
+  1 & 1 & stan pamiętania \\
+  \hline
+  1 & 0 & 0 \\
+  \hline
+  0 & 1 & 1 \\
+  \hline
+  0 & 0 & stan zabroniony \\
+\end{tabular}
+\end{center}
+
+Powyższą tabelkę sprawdziłem doświadczalnie w trakcie wykonywania ćwiczenia.
+
+## Przerzutnik Schmitta
+
+## Generator drgań prostokątnych
+
+## Układ redukujący częstotliwość
+
+## Licznik modulo 16
+
+## Licznik modulo 10
