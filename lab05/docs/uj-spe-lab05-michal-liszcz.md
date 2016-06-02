@@ -437,7 +437,16 @@ i na wyjściu bramki NOT daje stan niski.
 
 ### Przerzutnik Schmitta
 
-Należało skonstrować i zaobserwować działanie przerzutnika Schmitta.
+Należało skonstrować i zaobserwować działanie przerzutnika Schmitta
+przedstawionego na rys. \ref{fig:9-1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/fig-91.png}
+  \caption{Układ Schmitta. (Żródło: instrukcja laboratoryjna).}
+  \label{fig:9-1}
+\end{figure}
+
 
 Przerzutnik Schmitta to układ o dwóch progach przełączania (górnym i dolnym).
 Służy do generacji sygnałów prostokątnych. Oczekiwany przebieg na wyjściu
@@ -471,7 +480,48 @@ przedstawione są na rys. \ref{fig:9-3} oraz \ref{fig:9-4}.
   \label{fig:9-4}
 \end{figure}
 
+Dla częstotliwości f = 1 kHz dobrze widać że napięcia przerzutu nie leżą
+symetrycznie w przedziale 0 - 5 V. Sygnał wyjściowy pozostaje w stanie wysokim
+dłużej niż w stanie niskim. W układzie występuje również różniczkowanie,
+mimo braku jawnej obecności pojemności (kondensatorów).
+
 ## Generator drgań prostokątnych
+
+Zbudowałem generator drgań prostokątnych według schematu przedstawionego na
+rys. \ref{fig:10-1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/fig-101.png}
+  \caption{Schemat układu generatora drgań prostokątnych. (Żródło: instrukcja
+    laboratoryjna).}
+  \label{fig:10-1}
+\end{figure}
+
+Parametry układu należało dobrać tak, by częstotliwość $f$ generatora wynosiła
+
+\begin{equation}
+f = \frac{1}{3RC} \approx 1\,\text{kHz}
+\end{equation}
+
+Wybrałem następujące elementy:
+
+* $C = 220 \, \text{nF}$,
+* $R = 0.989 \, \text{k}\Omega$,
+* $f \approx 1515.1515 \, \text{Hz}$.
+
+Należy pamiętać żeby użyć oporu rzędu $1 \, \text{k}\Omega$, i odpowiednio
+dużej pojemności. Inaczej układ nie będzie generował przebiegu okresowego.
+
+Odczyt z oscyloskopu potwierdził oczekiwaną teoretyczną częstotliwość drgań
+generatora. Uzyskany obraz przedstawiony jest na rys. \ref{fig:10-2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.6\textwidth]{../screenshots/tek00020.png}
+  \caption{Generator drgań prostokątnych.}
+  \label{fig:10-2}
+\end{figure}
 
 ## Układ redukujący częstotliwość
 
