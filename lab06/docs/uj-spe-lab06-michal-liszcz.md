@@ -154,3 +154,129 @@ układu dla wejścia 000 pomiar napięcia wskazywał $0.8\,V$. Przyjąłem więc
 wartość jako poziom zerowy, stąd przesunięcie w tabeli.
 
 Efekt ten może być spowodowany nieidealnością zastosowanego wzmacniacza.
+
+# Przetwornik A/C (w oparciu o przetwornik C/A)
+
+Przeanalizować działanie ośmiobitowego przetwornika A/C i wyznaczyć jego
+rozdzielczość.
+
+## Wprowadzenie
+
+Przy użyciu przetwornika C/A można zbudować przetwornik analogowo-cyfrowy A/C.
+Idea jego działania polega na liniowym sprawdzeniu kolejnych liczb podawanych
+na wejście przetwornika C/A. Wybrana zostaje pierwsza, najmniejsza liczba
+której odpowiadający sygnał analogowy jest większy niż sygnał referencyjny
+(wejściowy). Uproszczony schemat takiego układu przedstawia rys. \ref{fig:2-1}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{images/adc_on_dac.png}
+  \caption{Przetwornik A/C w oparciu o C/A.}
+  \label{fig:2-1}
+\end{figure}
+
+Algorytm działania układu można opisać następującymi krokami:
+
+1. Licznik początkowo ma wartość 0,
+1. Wartość w liczniku zamieniana jest w przetworniku C/A na sygnał analogowy
+   (napięcie),
+1. Sygnał analogowy z C/A porównywany jest z sygnałem wejściowym:
+    * jeżeli sygnał z C/A jest większy, zmianie ulega stan na wyjściu
+      komparatora, co powoduje zatrzymanie generatora,
+      w liczniku znajduje się wynik konwersji sygnału wejściowego na postać
+      cyfrową,
+    * jeżeli sygnał z C/A jest mniejszy, układ kontynuuje pracę,
+1. Generator zegarowy powoduje inkrementację licznika, cały proces startuje od
+   początku,
+1. Jeżeli licznik osiągnął maksimum, odliczanie zaczyna się od początku a
+   napięcie wejściowe jest większe od maksymalnego napięcia obsługiwanego
+   przez przetwornik C/A.
+
+Rozdzielczość układu zależy od ilości bitów w liczniku i przetworniku oraz
+sygnału wzorcowego $U_\text{max}$ (wyjście z C/A dla wszystkich bitów w stanie
+wysokim) i wynosi $\Delta U = U_\text{max} / 2^N$.
+
+Rozdzielczość czasowa zależy od częstotliwości generatora.
+
+## Rozdzielczość przetwornika
+
+Ćwiczenie przeprowadzałem z użyciem gotowego układu ośmiobitowego przetwornika
+A/C. Zakres pracy był ustawiony na $5\,V$. Dostępne były cztery częstotliwości
+pracy generatora zegarowego.
+
+Wybrałem napięcie większe niż dopuszczalny zakres, przy którym generator nie
+był zatrzymywany. Na oscyloskopie można w ten sposób zaobserwować okresowo
+rosnący poziom stałego sygnału będący wyjściem z przetwornika C/A. Odpowiednie
+ustawiene wyzwalania pozwala zaobserwować przebieg piłokształtny przedstawiony
+na rys. \ref{fig:2-2}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00042.png}
+  \caption{Przetwornik A/C, sygnał piłokształtny na wyjściu z przetwornika C/A.}
+  \label{fig:2-2}
+\end{figure}
+
+W dalszej kolejności na oscyloskopie można zobaczyć skokową zmianę napięcia
+na zboczach narastających sygnału piłokształtnego. Przykładowy obraz z
+oscyloskopu przedstawia rys. \ref{fig:2-3}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00051.png}
+  \caption{Przetwornik A/C, rozdzielczość.}
+  \label{fig:2-3}
+\end{figure}
+
+Z powyższego obrazu można odczytać rozdzielczość napięciową i czasową (zależną
+od ustawionej częstotliwości generatora):
+
+\begin{equation}
+\begin{aligned}
+\Delta T &= 10.20 \, \text{ms} \\
+\Delta U &= 19.80 \, \text{mV}
+\end{aligned}
+\end{equation}
+
+Oczekiwana teoretyczna rozdzielczość napięciowa to $\Delta U = 5.0 \, \text{V}
+/ 255 \approx 19.61$. Widać że zmierzona wartość jest zgodna z oczekiwaną.
+
+## Częstotliwość pracy
+
+Należało wyznaczyć maksymalną i minimalną częstotliwość pracy przetwornika.
+W tym celu zmierzyłem okres generowanych przebiegów piłokształtnych dla dwóch
+ustawień zworek kontrolujących generator zegarowy:
+
+* 00 - częstotliwość minimalna,
+* 11 - częstotliwość maksymalna (według dokumentacji układu jest 512x
+  większa od częstotliwości minimalnej).
+
+Obu pomiarów dokonałem przy pomocy oscyloskopu, z różną podstawą czasową.
+Przykład odczytu przedstawia rys. \ref{fig:2-4}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00056.png}
+  \caption{Przetwornik A/C, pomiar minimalnej częstotliwości pracy generatora.}
+  \label{fig:2-4}
+\end{figure}
+
+W ciągu jednego okresu generator generuje 255 impulsów zegarowych. Odczytane
+wartości należy podzielić przez tę liczbę. Ich odwrotność będzie
+częstotliwością pracy zegara. W celu dodatkowej weryfikacji pomiar
+częstotliwości maksymalnej przeprowadziłem również na mniejszym odcinku.
+Otrzymane wyniki:
+
+\begin{equation}
+\begin{aligned}
+\Delta f_\text{max,1} &= 1/(40.80 \,\text{ms} / 255) \approx 6375.00 \,\text{Hz} \\
+\Delta f_\text{max,2} &= 1/(798.0 \,\mu\text{s} / 5) \approx 6265.66 \,\text{Hz} \\
+\Delta f_\text{min} &= 1/(41.70 \,\text{s} / 255) \approx 6.12 \,\text{Hz}
+\end{aligned}
+\end{equation}
+
+Z otrzymanych częstotliwości wynika, że częstotliwość maksymalna jest nie 512x,
+ale 1024x większa od częstotliwości minimalnej. Nie udało mi się ustalić co
+jest powodem tej dwukrotnej rozbieżności. Przy pomiarze częstotliwości
+minimalnej zwarłem oba dolne piny, natomiast przy pomiarze częstotliwości
+maksymalnej - oba górne.
