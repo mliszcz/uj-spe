@@ -157,8 +157,8 @@ Efekt ten może być spowodowany nieidealnością zastosowanego wzmacniacza.
 
 # Przetwornik A/C (w oparciu o przetwornik C/A)
 
-Przeanalizować działanie ośmiobitowego przetwornika A/C i wyznaczyć jego
-rozdzielczość.
+Należało przeanalizować działanie ośmiobitowego przetwornika A/C i wyznaczyć
+jego rozdzielczość.
 
 ## Wprowadzenie
 
@@ -167,6 +167,8 @@ Idea jego działania polega na liniowym sprawdzeniu kolejnych liczb podawanych
 na wejście przetwornika C/A. Wybrana zostaje pierwsza, najmniejsza liczba
 której odpowiadający sygnał analogowy jest większy niż sygnał referencyjny
 (wejściowy). Uproszczony schemat takiego układu przedstawia rys. \ref{fig:2-1}.
+
+Przetwornik ten bywa również nazywany przetwornikiem z próbkowaniem analogowym.
 
 \begin{figure}[H]
   \centering
@@ -280,3 +282,181 @@ ale 1024x większa od częstotliwości minimalnej. Nie udało mi się ustalić c
 jest powodem tej dwukrotnej rozbieżności. Przy pomiarze częstotliwości
 minimalnej zwarłem oba dolne piny, natomiast przy pomiarze częstotliwości
 maksymalnej - oba górne.
+
+# Przetwornik A/C (typu FLASH)
+
+Należało przeanalizować działanie przetwornika A/C typu FLASH.
+
+## Wprowadzenie
+
+Przetwornik A/C typu FLASH to przetwornik wykorzystujący bezpośrednie
+porównanie napięcia wejściowego z szeregiem napięć odniesienia. Wszystkie
+porównania następują jednocześnie, przy użyciu wielu komparatorów. Wyjścia
+komparatorów wyprowadzone są na transkoder, który po odpowiednim
+zaprogramowaniu przekształca je na naturalny kod binarny. Ogólny, uproszczony
+schemat układu przedstawia rys. \ref{fig:3-1}. Na rysunku dodatkowo dołączony
+jest przetwornik C/A, który konwertuje otrzymany sygnał z powrotem na sygnał
+analogowy.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/spe-ac-flash-full.png}
+  \caption{Przetwornik A/C, układ wykorzystywany w trakcie ćwiczenia.}
+  \label{fig:3-1}
+\end{figure}
+
+Przetwornik typu FLASH jest znacznie szybszy od przetwornika z próbkowaniem
+i działa w czasie stałym względem mierzonego napięcia.
+Jego konstrukcja jest jednak bardziej skomplikowana a rozdzielczość mniejsza
+(N-bitowy przetwornik pozwala na odczyt N poziomów napięcia).
+
+**Moduł komparatorów**. Służy do zamiany sygnału analogowego na kod
+*linijkowy* (liczba $n<N$ reprezentowana jest przez $n$ pierwszych bitów
+w stanie wysokim w rejestrze). Użyty w ćwiczeniu moduł pozwala na pomiar
+napięcia z zakresu 0 do 10 V i konwersję go na wartość liczbową od 0 do 15
+(zapisaną na 16 bitach).
+
+Schemat układu przedstawia rys. \ref{fig:3-2}.
+
+**Transkoder**. Służy do konwersji kodu *linijkowego* na kod czterobitowy,
+zgodnie z zaprogramowanymi regułami. Kod linijkowy jest bardzo nieefektywny
+pamięciowo - do jednoznacznej reprezentacji $N$-bitowego kodu linijkowego
+wystarczy $\log_2 N$ bitów (binarnego kodu naturalnego lub kodu Graya).
+
+Pierwszym etapem konwersji jest zamiana kodu linijkowego na standardowy kod
+"1 z $N$". Każda z $N$ linii wyjsciowych konwersji na "1 z $N$" jest
+wprowadzona na 4 przełączniki *dip-switch*. Przy ich pomocy można ustawić
+kombinację 4 bitów odpowiadających danemu kodowi "1 z $N$". Wyjścia z
+*dip-switchy* są wyprowadzane na wyjście układu transkodera.
+
+**Przetwornik C/A**. Pozwala na ponowną konwersję sygnału cyfrowego na
+analogowy. Można go wykorzystać do weryfikacji działania układu.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.2\textwidth]{images/spe-ac-flash-comp.png}
+  \caption{Moduł komparatorów przetwornika FLASH. Uproszczony fragment schematu
+    z drabinką rezystorową i szeregiem komparatorów.
+    Wyjścia z komparatorów to kolejne bity kodu linijkowego.}
+  \label{fig:3-2}
+\end{figure}
+
+## Programowanie transkodera RPP-S
+
+Transkoder RPP-S to opisany wcześniej transkoder wykorzystujący ręczne
+przełączniki.
+
+W celu weryfikacji działania układu, zaprogramowałem go tak, by kolejnym
+liczbom kodu linijkowego odpowiadały kolejne liczby naturalnego kodu binarnego.
+Po tej operacji i ponownej kowersji na sygnał analogowy, sygnał wyjściowy
+powinien być skwantowany, o 16 dyskretnych poziomach napięcia. Uzyskany
+obraz na oscyloskopie przedstawia rys. \ref{fig:3-3}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00061.png}
+  \caption{Przetwornik A/C FLASH, konwersja na postać cyfrową i odtworzenie
+    sygnału.}
+  \label{fig:3-3}
+\end{figure}
+
+Przełączniki były ustawione w następujący sposób:
+
+\begin{equation}
+(0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15)
+\end{equation}
+
+Rozdzielczość napięciowa tego konwertera wynosi około $0.625\,\text{V}$, jest
+znacznie niższa niż 8-bitowego przetwornika z próbkowaniem analizowanego w
+poprzedniej części ćwiczenia.
+
+## Inwersja sygnału
+
+Układ można przeprogramować tak, by dokonywał inwersji sygnału. W tym celu
+dla wejściowego sygnału odpowiadającego liczbie $n$ należy ustalić wyjście jako
+$N-1-n$. Odpowiednie ustawienie przełączników to:
+
+\begin{equation}
+(15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0)
+\end{equation}
+
+Otrzymany obraz na oscyloskopie przedstawiają rys. \ref{fig:3-4} oraz
+\ref{fig:3-5}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00062.png}
+  \caption{Przetwornik A/C FLASH, inwersja sygnału sinusoidalnego.}
+  \label{fig:3-4}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00064.png}
+  \caption{Przetwornik A/C FLASH, inwersja sygnału trójkątnego.}
+  \label{fig:3-5}
+\end{figure}
+
+## Zmiana częstotliwości
+
+Aby podzielić częstotliwość przez dwa, należy tak zaprogramować układ, aby dla
+liczby $n=N/2$ osiągnąć generować maksymalną wartość, a następnie generować
+kolejne liczby w kierunku 0. Ustawienie przełączników:
+
+\begin{equation}
+(0,2,4,6,8,10,12,16,16,12,10,8,6,4,2,0)
+\end{equation}
+
+Uzyskany schemat można połączyć dodatkowo z inwersją, jak pokazuje rys.
+\ref{fig:3-6}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00065.png}
+  \caption{Przetwornik A/C FLASH, inwersja i zmiana częstotliwości.}
+  \label{fig:3-6}
+\end{figure}
+
+## Zakres częstotliwości pracy
+
+Na wejście układu podawałem sygnał trójkątny, zwiększając jego częstotliwość.
+
+Powyżej częstotliwości $f_\text{max} = 2\,\text{kHz}$ w obrazie pojawiały
+się już przekłamania, przedstawione na rys. \ref{fig:3-7}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00071.png}
+  \caption{Przetwornik A/C FLASH, maksymalna częstotliwość pracy.}
+  \label{fig:3-7}
+\end{figure}
+
+Układ pracował dobrze przy najmniejszych możliwych do ustawienia
+częstotliwościach.
+
+## Pamięć RPP-SRAM
+
+Dodatkowym elementem zestawu ćwiczeniowego była alternatywna implementacja
+transkodera, zbudowana w oparciu o ulotną pamięć SRAM. W celu jego
+przetestowania, zaprogramowałem układ tak, by po osiągnięciu połowy
+maksymalnej wartości sygnał był odwrócony. Zaprogramowałem następujący schemat:
+
+\begin{equation}
+(0,1,2,3,4,5,6,7,8,7,6,5,4,3,2,1)
+\end{equation}
+
+Otrzymane wyniki przedstawione są na rys. \ref{fig:3-8} oraz \ref{fig:3-9}.
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00077.png}
+  \caption{Przetwornik A/C FLASH, test transkodera RPP-SRAM, sygnał sinusoidalny.}
+  \label{fig:3-8}
+\end{figure}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.7\textwidth]{../screenshots/tek00076.png}
+  \caption{Przetwornik A/C FLASH, test transkodera RPP-SRAM, sygnał trójkątny.}
+  \label{fig:3-9}
+\end{figure}
